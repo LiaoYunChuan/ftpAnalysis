@@ -1,4 +1,4 @@
-package com.longruan.ftpanalysis.mq.model;
+package com.longruan.ftpanalysis.mq.model.hjjc;
 
 import com.longruan.ftpanalysis.batch.entity.MsgName;
 import com.longruan.ftpanalysis.mq.consts.BatchConstants;

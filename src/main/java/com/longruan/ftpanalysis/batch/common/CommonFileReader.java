@@ -24,35 +24,39 @@ public class CommonFileReader extends FlatFileItemReader {
 
     public CommonFileReader(Class headClz, Class dataClz) {
 
-        //  System.err.println("读取文件 ： headTokenizers : " + headTokenizers);
-        //  System.err.println("           dataTokenizers : " + dataTokenizers);
-        //  System.err.println("           headField : " + headField);
-        //  System.err.println("           dataField : " + dataField);
-        //  System.err.println("           headClz : " + headClz);
-        //  System.err.println("           dataClz : " + dataClz);
-
         String[] headField = getFieldStr(headClz);
         List<String[]> dataFields = getFieldStrByGroup(dataClz);
-        String headTokenizers = Arrays.stream(headField).map(e -> "*").collect(Collectors.joining());
 
         PatternMatchingCompositeLineMapper lineMapper = new PatternMatchingCompositeLineMapper<>();
         Map<String, LineTokenizer> lineTokenizers = new HashMap<>();
         Map<String, FieldSetMapper> fieldSetMappers = new HashMap<>();
 
-        lineTokenizers.put(headTokenizers, new DelimitedLineTokenizer() {{
-            setNames(headField);
-        }});
-        fieldSetMappers.put(headTokenizers, new BeanWrapperFieldSetMapper() {{
-            setTargetType(headClz);
-        }});
+        System.err.println("读取文件 ：  : ");
+        System.err.println("           headClz : " + headClz);
+        System.err.println("           dataClz : " + dataClz);
+
+        {
+            String headTokenizers = Arrays.stream(headField).map(e -> "*").collect(Collectors.joining(","));
+            lineTokenizers.put(headTokenizers, new DelimitedLineTokenizer() {{
+                setNames(headField);
+            }});
+            fieldSetMappers.put(headTokenizers, new BeanWrapperFieldSetMapper() {{
+                setTargetType(headClz);
+            }});
+            System.err.println("           headTokenizers : " + headTokenizers);
+            System.err.println("           headField : " + headField);
+        }
+
         for (String[] dataField : dataFields) {
-            String dataTokenizers = Arrays.stream(dataField).map(e -> "*").collect(Collectors.joining());
+            String dataTokenizers = Arrays.stream(dataField).map(e -> "*").collect(Collectors.joining(","));
             lineTokenizers.put(dataTokenizers, new DelimitedLineTokenizer() {{
                 setNames(dataField);
             }});
             fieldSetMappers.put(dataTokenizers, new BeanWrapperFieldSetMapper() {{
                 setTargetType(dataClz);
             }});
+            System.err.println("           dataTokenizers : " + dataTokenizers);
+            System.err.println("           dataField : " + dataField);
         }
         lineMapper.setTokenizers(lineTokenizers);
         lineMapper.setFieldSetMappers(fieldSetMappers);

@@ -3,7 +3,7 @@ package com.example.demo;
 import com.longruan.ftpanalysis.FmftpApplication;
 import com.longruan.ftpanalysis.batch.common.CommonJobConfig;
 import com.longruan.ftpanalysis.batch.entity.MsgName;
-import com.longruan.ftpanalysis.mq.model.RealtimeDataInformation;
+import com.longruan.ftpanalysis.mq.model.hjjc.RealtimeDataInformation;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;

@@ -56,7 +56,7 @@ public class CommonWriter implements ItemWriter {
         try {
 
             String readPath = "file:" + batchConfig.getSystemPath(msgName.sysType()) + "/" + stepMark + "/" + msgName.filePath();
-            String logBasePath = batchConfig.getLogPath(msgName.sysType()) + "/" + stepMark + "/Log." + DateFormatUtils.format(new Date(), "yyyy-MM-dd") + "/";
+            String logBasePath = batchConfig.getLogPath(msgName.sysType()) + "/" + stepMark + "/" + DateFormatUtils.format(new Date(), "yyyy-MM-dd") + "/";
             resources = patternResolver.getResources(readPath);
             System.err.println("日志地址 : " + logBasePath);
             File file = new File(logBasePath);
