@@ -1,9 +1,10 @@
 package com.longruan.ftpanalysis.batch.common;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.longruan.ftpanalysis.batch.entity.FieldOrder;
 import com.longruan.ftpanalysis.batch.entity.FieldOrders;
-import com.longruan.ftpanalysis.mq.model.CompanyInfomation;
+import com.longruan.ftpanalysis.mq.model.hjjc.CompanyInfomation;
 import org.apache.logging.log4j.util.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -77,7 +78,8 @@ public class CommonFileReader extends FlatFileItemReader {
                     Arrays.stream(fos).forEach(order -> {
                         Map<String, Integer> fieldOrderMap = fieldGroups.get(order.group());
                         if (fieldOrderMap == null) fieldOrderMap = new LinkedHashMap<>();
-                        fieldOrderMap.put(Strings.isNotBlank(fieldOrders.name()) ? fieldOrders.name() : e.getName(), order.order());
+                        JSONField jSONField = e.getAnnotation(JSONField.class);
+                        fieldOrderMap.put(Strings.isNotBlank(jSONField.name()) ? jSONField.name() : e.getName(), order.order());
                         fieldGroups.put(order.group(), fieldOrderMap);
                     });
                 });
