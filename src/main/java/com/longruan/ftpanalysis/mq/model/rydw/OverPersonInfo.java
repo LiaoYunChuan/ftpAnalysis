@@ -1,7 +1,14 @@
-package com.longruan.ftpanalysis.mq.model;
+package com.longruan.ftpanalysis.mq.model.rydw;
+
+import com.longruan.ftpanalysis.batch.entity.FieldOrder;
+import com.longruan.ftpanalysis.batch.entity.FieldOrders;
+import com.longruan.ftpanalysis.batch.entity.MsgName;
+import com.longruan.ftpanalysis.mq.consts.BatchConstants;
+import com.longruan.ftpanalysis.mq.consts.MQConstants;
 
 import java.util.Date;
 
+@MsgName(job = "超员/进入限制区域报警", filePath = "*_DWCY_*", sysType = BatchConstants.SystemType.rydw, exchangeName = MQConstants.ExChanges.NC_PL_OVERPERSONDATA)
 public class OverPersonInfo {
 
     /**
@@ -11,6 +18,7 @@ public class OverPersonInfo {
     /**
      * 人员编号
      */
+
     private java.lang.String cardId;
     /**
      * 人员卡编号
@@ -19,14 +27,23 @@ public class OverPersonInfo {
     /**
      * 超员类别
      */
+    @FieldOrders({
+            @FieldOrder(order = 1),
+    })
     private java.lang.Integer overPersonType;
     /**
      * 矿井限定人数
      */
+    @FieldOrders({
+            @FieldOrder(order = 2),
+    })
     private java.lang.Integer limitPersonNum;
     /**
      * 井下人数
      */
+    @FieldOrders({
+            @FieldOrder(order = 3),
+    })
     private java.lang.Integer personCount;
     /**
      * 入井时间
@@ -35,14 +52,23 @@ public class OverPersonInfo {
     /**
      * 报警开始时间
      */
+    @FieldOrders({
+            @FieldOrder(order = 6)
+    })
     private String alarmSTime;
     /**
      * 报警结束时间
      */
+    @FieldOrders({
+            @FieldOrder(order = 7),
+    })
     private String alarmETime;
     /**
      * 区域编号
      */
+    @FieldOrders({
+            @FieldOrder(order = 4),
+    })
     private java.lang.String areaId;
     /**
      * 进入区域时间
@@ -51,10 +77,16 @@ public class OverPersonInfo {
     /**
      * 分站编号
      */
+    @FieldOrders({
+            @FieldOrder(order = 4),
+    })
     private java.lang.String stationId;
     /**
      * 分站人数
      */
+    @FieldOrders({
+            @FieldOrder(order = 3),
+    })
     private java.lang.Integer personCountInStation;
     /**
      * 进入分站时间

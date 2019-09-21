@@ -1,7 +1,13 @@
-package com.longruan.ftpanalysis.mq.model;
+package com.longruan.ftpanalysis.mq.model.rydw;
+
+import com.longruan.ftpanalysis.batch.entity.MsgName;
+import com.longruan.ftpanalysis.mq.consts.BatchConstants;
+import com.longruan.ftpanalysis.mq.consts.MQConstants;
 
 import java.io.Serializable;
 import java.util.Date;
+
+@MsgName(job = "实时数据", filePath = "*_HJSS_*", sysType = BatchConstants.SystemType.rydw, exchangeName = MQConstants.ExChanges.NC_PERSON)
 
 public class Person implements Serializable {
     /**

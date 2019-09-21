@@ -1,5 +1,10 @@
-package com.longruan.ftpanalysis.mq.model;
+package com.longruan.ftpanalysis.mq.model.rydw;
 
+import com.longruan.ftpanalysis.batch.entity.MsgName;
+import com.longruan.ftpanalysis.mq.consts.BatchConstants;
+import com.longruan.ftpanalysis.mq.consts.MQConstants;
+
+@MsgName(job = "实时数据", filePath = "*_HJSS_*", sysType = BatchConstants.SystemType.rydw, exchangeName = MQConstants.ExChanges.NC_PL_STATION)
 public class StationInformation implements java.io.Serializable {
     /**
      * 数据时间
