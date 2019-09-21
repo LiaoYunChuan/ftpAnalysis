@@ -1,4 +1,4 @@
-package com.longruan.ftpanalysis.mq.model;
+package com.longruan.ftpanalysis.mq.model.hjjc;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.longruan.ftpanalysis.batch.entity.FieldOrder;
@@ -13,7 +13,7 @@ public class CompanyInfomation {
     /**
      * 行政区域代码
      */
-    @JSONField(name = "orgCode",serialize = true)
+    @JSONField(name = "orgCode")
     private String orgCode;
     /**
      * 企业编号
@@ -22,7 +22,8 @@ public class CompanyInfomation {
             @FieldOrder(order = 1),
             @FieldOrder(group="g2",order = 2),
             @FieldOrder(group="g3",order = 2)
-    },name="companyCode")
+    })
+    @JSONField(name="companyCode")
     private String S1;
 
     /**
@@ -32,7 +33,6 @@ public class CompanyInfomation {
             @FieldOrder(order = 2),
             @FieldOrder(group="g2",order = 1)
     })
-    @JSONField(name = "S2")
     private String S2;
     /**
      * 企业名称

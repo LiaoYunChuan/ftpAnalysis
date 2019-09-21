@@ -7,6 +7,4 @@ import java.lang.annotation.*;
 @Documented
 public @interface FieldOrders {
     FieldOrder[] value();
-
-    String name() default "";
 }

@@ -5,6 +5,7 @@ import com.longruan.ftpanalysis.batch.config.BatchConfig;
 import com.longruan.ftpanalysis.batch.entity.MsgName;
 import com.longruan.ftpanalysis.mq.model.MQMsg;
 import com.longruan.ftpanalysis.mq.model.MsgHead;
+import com.longruan.ftpanalysis.mq.model.hjjc.CompanyInfomation;
 import com.longruan.ftpanalysis.mq.send.ISenderService;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.batch.item.ItemWriter;
@@ -84,7 +85,7 @@ public class CommonWriter implements ItemWriter {
         Method getCompanyId = headClass.getMethod("getCompanyId");
         Method getDataTime = headClass.getMethod("getDataTime");
         Method setDataTime = jobClass.getMethod("setDataTime", String.class);
-
+        Method setOrgCode = jobClass.getMethod("setOrgCode", String.class);
         for (Object e : items) {
             if (e.getClass().equals(headClass)) {
                 String companyid = (String) getCompanyId.invoke(e);
@@ -93,7 +94,10 @@ public class CommonWriter implements ItemWriter {
                 msgHead.setCompanyId(companyid);
                 dataTime = (String) getDataTime.invoke(e);
             } else {
-                setDataTime.invoke(e, dataTime);
+                if(e instanceof CompanyInfomation){
+                    setOrgCode.invoke(e,msgHead.getOrgCode());
+                }
+                if (setDataTime != null) setDataTime.invoke(e, dataTime);
                 data.add(e);
             }
         }
@@ -102,7 +106,7 @@ public class CommonWriter implements ItemWriter {
         mQMsg.setData(data);
         System.err.println("头数据 ： ");
         System.err.println(JSON.toJSONString(msgHead));
-        System.err.println("请求体 ： " + data.size());
+        System.err.println("消息体数据 ： " + data.size());
         System.err.println(JSON.toJSONString(data));
         //iSenderService.send(msgName.exchangeName(), JSON.toJSONString(msg).getBytes());
     }
