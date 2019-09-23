@@ -1,13 +1,12 @@
 package com.longruan.ftpanalysis.mq.model.rydw;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.longruan.ftpanalysis.batch.entity.FieldOrder;
 import com.longruan.ftpanalysis.batch.entity.FieldOrders;
 import com.longruan.ftpanalysis.batch.entity.MsgName;
 import com.longruan.ftpanalysis.mq.consts.BatchConstants;
 import com.longruan.ftpanalysis.mq.consts.MQConstants;
 
-@MsgName(job = "生产经营单位参数", filePath = "*_DWDW_*", sysType = BatchConstants.SystemType.rydw, exchangeName = MQConstants.ExChanges.NC_COMPANY)
+@MsgName(job = "生产经营单位参数", filePath = "*_HJDW_*", sysType = BatchConstants.SystemType.hjjc, exchangeName = MQConstants.ExChanges.NC_COMPANY)
 public class CompanyInfomation {
     private static final long serialVersionUID = 1L;
     /**

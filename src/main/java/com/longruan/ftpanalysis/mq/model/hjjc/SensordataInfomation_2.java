@@ -1,29 +1,19 @@
 package com.longruan.ftpanalysis.mq.model.hjjc;
 
 import com.longruan.ftpanalysis.batch.entity.FieldOrder;
-import com.longruan.ftpanalysis.batch.entity.FileHead2;
-import com.longruan.ftpanalysis.batch.entity.MsgName;
-import com.longruan.ftpanalysis.batch.entity.OtherBody;
-import com.longruan.ftpanalysis.mq.consts.BatchConstants;
-import com.longruan.ftpanalysis.mq.consts.MQConstants;
 
 import java.io.Serializable;
 
-@MsgName(job = "设备文件", filePath = "*_HJDEV_*",head = FileHead2.class,sysType = BatchConstants.SystemType.hjjc, exchangeName = MQConstants.ExChanges.NC_SM_REALTIME_DATA)
-@OtherBody({
-        SensordataInfomation_2.class,SensordataInfomation_3.class,SensordataInfomation_4.class,
-        SensordataInfomation_5.class,SensordataInfomation_6.class
-})
-public class SensordataInfomation implements Serializable {
+public class SensordataInfomation_2 implements Serializable {
 
     @FieldOrder(order = 1)
     private String S1;    //测点编号
     @FieldOrder(order = 2)
-    private String S2;    //监测数值类型编码
+    private String S2;    //测点数值类型编码
     @FieldOrder(order = 3)
     private String S3;    //监测类型编码
     @FieldOrder(order = 4)
-    private String S4;    //分站号
+    private String S4;    //分站编号
     @FieldOrder(order = 5)
     private String S5;    //测点名称
     @FieldOrder(order = 6)
@@ -31,37 +21,28 @@ public class SensordataInfomation implements Serializable {
     @FieldOrder(order = 7)
     private String S7;    //测点所属区域名称
     @FieldOrder(order = 8)
-    private String S8;    //区域位置类型编码
+    private String S8;    //传感器所在区域的位置编码
     @FieldOrder(order = 9)
     private String S9;    //测点重要性
     @FieldOrder(order = 10)
-    private String S10;    //单位类型
+    private String S10;    //开描述
     @FieldOrder(order = 11)
-    private String S11;    //量程上限
+    private String S11;    //停描述
     @FieldOrder(order = 12)
-    private String S12;    //量程下限
+    private String S12;    //报警状态
     @FieldOrder(order = 13)
-    private String S13;    //上限报警门限
+    private String S13;    //解报状态
     @FieldOrder(order = 14)
-    private String S14;    //上限解报门限
+    private String S14;    //断电状态
     @FieldOrder(order = 15)
-    private String S15;    //下限报警门限
+    private String S15;    //复电状态
     @FieldOrder(order = 16)
-    private String S16;    //下限解报门限
+    private String S16;    //传感器关联关系
     @FieldOrder(order = 17)
-    private String S17;    //上限断电门限
+    private String S17;    //测点Y坐标
     @FieldOrder(order = 18)
-    private String S18;    //上限复电门限
-    @FieldOrder(order = 19)
-    private String S19;    //下限断电门限
-    @FieldOrder(order = 20)
-    private String S20;    //下限复电门限
-    @FieldOrder(order = 21)
-    private String S21;    //传感器关联关系
-    @FieldOrder(order = 22)
-    private String S22;    //测点Y坐标
-    @FieldOrder(order = 23)
-    private String S23;    //测点X坐标
+    private String S18;    //测点X坐标
+
 
     public String getS1() {
         return S1;
@@ -205,45 +186,5 @@ public class SensordataInfomation implements Serializable {
 
     public void setS18(String s18) {
         S18 = s18;
-    }
-
-    public String getS19() {
-        return S19;
-    }
-
-    public void setS19(String s19) {
-        S19 = s19;
-    }
-
-    public String getS20() {
-        return S20;
-    }
-
-    public void setS20(String s20) {
-        S20 = s20;
-    }
-
-    public String getS21() {
-        return S21;
-    }
-
-    public void setS21(String s21) {
-        S21 = s21;
-    }
-
-    public String getS22() {
-        return S22;
-    }
-
-    public void setS22(String s22) {
-        S22 = s22;
-    }
-
-    public String getS23() {
-        return S23;
-    }
-
-    public void setS23(String s23) {
-        S23 = s23;
     }
 }

@@ -38,12 +38,11 @@ public class CommonWriter implements ItemWriter {
 
     @Override
     public void write(List items) throws Exception {
-
         this.msgName = (MsgName) jobClass.getAnnotation(MsgName.class);
         if (msgName == null) throw new ClassNotFoundException();
 
         //转移到日志目录
-        asynWriteFileMethod();
+        // asynWriteFileMethod();
 
         //发送消息
         asyncMethod(items);
@@ -61,7 +60,6 @@ public class CommonWriter implements ItemWriter {
             resources = patternResolver.getResources(readPath);
             System.err.println("日志地址 : " + logBasePath);
             File file = new File(logBasePath);
-            System.err.println(file.exists());
             if (!file.exists()) {
                 file.mkdirs();
                 System.err.println("日志路径不存在，创建目录");
@@ -84,8 +82,9 @@ public class CommonWriter implements ItemWriter {
         MsgHead msgHead = new MsgHead();
         Method getCompanyId = headClass.getMethod("getCompanyId");
         Method getDataTime = headClass.getMethod("getDataTime");
-        Method setDataTime = jobClass.getMethod("setDataTime", String.class);
-        Method setOrgCode = jobClass.getMethod("setOrgCode", String.class);
+        boolean needSetOrgCode = true;
+        boolean needDataTime = true;
+
         for (Object e : items) {
             if (e.getClass().equals(headClass)) {
                 String companyid = (String) getCompanyId.invoke(e);
@@ -94,14 +93,33 @@ public class CommonWriter implements ItemWriter {
                 msgHead.setCompanyId(companyid);
                 dataTime = (String) getDataTime.invoke(e);
             } else {
-                if(e instanceof CompanyInfomation){
-                    setOrgCode.invoke(e,msgHead.getOrgCode());
+                if (e instanceof CompanyInfomation) {
+                    if (needSetOrgCode) {
+                        try {
+                            Method setOrgCode = jobClass.getMethod("setOrgCode", String.class);
+                            setOrgCode.invoke(e, msgHead.getOrgCode());
+                        } catch (Exception noMethodExcpetion) {
+                            System.err.println("不需要设置OrgCode！");
+                            needSetOrgCode = false;
+                        }
+                    }
+
                 }
-                if (setDataTime != null) setDataTime.invoke(e, dataTime);
+                if (needDataTime) {
+                    try {
+                        Method setDataTime = jobClass.getMethod("setDataTime", String.class);
+                        setDataTime.invoke(e, dataTime);
+                    } catch (Exception noMethodExcpetion) {
+                        System.err.println("不需要设置时间！");
+                        needDataTime = false;
+                    }
+                }
+
+
                 data.add(e);
             }
         }
-        msgHead.setUpTime(DateFormatUtils.format(new Date(), "yyyy-MM-dd hh:mm:dd"));
+        msgHead.setUpTime(DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:dd"));
         mQMsg.setHead(msgHead);
         mQMsg.setData(data);
         System.err.println("头数据 ： ");

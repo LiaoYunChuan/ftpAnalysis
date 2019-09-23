@@ -1,4 +1,4 @@
-package com.longruan.ftpanalysis.mq.model;
+package com.longruan.ftpanalysis.mq.model.hjjc;
 
 import com.alibaba.fastjson.annotation.JSONField;
 

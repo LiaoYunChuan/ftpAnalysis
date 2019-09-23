@@ -1,7 +1,6 @@
 package com.longruan.ftpanalysis.mq.model.hjjc;
 
 import com.longruan.ftpanalysis.batch.entity.FieldOrder;
-import com.longruan.ftpanalysis.batch.entity.FieldOrders;
 import com.longruan.ftpanalysis.batch.entity.MsgName;
 import com.longruan.ftpanalysis.mq.consts.BatchConstants;
 import com.longruan.ftpanalysis.mq.consts.MQConstants;
@@ -19,31 +18,20 @@ public class RealtimeDataInformation implements Serializable {
     /**
      * 传感器id
      */
-    @FieldOrders({
-            @FieldOrder(order = 1)
-    })
+    @FieldOrder(order = 1)
     private String sensorId;
 
     private String sensorTime;
     /**
      * 当前值
      */
-    @FieldOrders({
-            @FieldOrder(order = 2),
-
-    })
+    @FieldOrder(order = 2)
     private String monitorVal;
     /**
      * 状态
      */
-    @FieldOrders({
-            @FieldOrder(order = 3)
-    })
+    @FieldOrder(order = 3)
     private String sensorStatus;
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public String getDataTime() {
         return dataTime;

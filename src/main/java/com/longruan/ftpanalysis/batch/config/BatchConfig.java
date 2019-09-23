@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+import java.util.Map;
+
 @Configuration("batchConfig")
 @PropertySource("classpath:batchconfig.properties")
 public class BatchConfig {
@@ -28,11 +30,11 @@ public class BatchConfig {
     @Value("${msg.file.log.rydw.basepath}")
     private String logRydwPath;
 
-    private JSONObject orgCodeMapperMap;
+    private Map<String,JSONObject> orgCodeMapperMap;
 
     @Bean
     public void setOrgCodeMapperMap() {
-        this.orgCodeMapperMap = JSON.parseObject(this.orgCodeMapper);
+        this.orgCodeMapperMap = JSON.parseObject(this.orgCodeMapper,Map.class);
     }
 
     @Bean
@@ -55,8 +57,10 @@ public class BatchConfig {
     }
 
     public String getOrgCode(String key) {
-
-        return this.orgCodeMapperMap.containsKey(key) ? (String) this.orgCodeMapperMap.get(key) : "";
+        return this.orgCodeMapperMap.containsKey(key) ? (String) this.orgCodeMapperMap.get(key).get("oc") : "";
+    }
+    public String getComCode(String key) {
+        return this.orgCodeMapperMap.containsKey(key) ? (String) this.orgCodeMapperMap.get(key).get("cc") : "";
     }
 
     public String getAqjcPath() {

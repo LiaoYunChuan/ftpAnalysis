@@ -63,7 +63,7 @@ public class CommonJobConfig {
         String filePath = batchConfig.getSystemPath(msgName.sysType());
         File file = new File(filePath);
         String[] files = file.list();
-        if(files.length==0)throw new Exception("该目录下没有企业！");
+        if(files!=null&&files.length==0)throw new Exception("该目录下没有企业！");
 
         FlowBuilder<Flow> flowBuilder = new FlowBuilder<>("统一【"+msgName.job()+"】处理流程");
         FlowBuilder.SplitBuilder<Flow> splitBuilder = flowBuilder.split(new SimpleAsyncTaskExecutor());
