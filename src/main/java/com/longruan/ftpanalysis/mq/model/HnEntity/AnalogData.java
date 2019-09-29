@@ -1,80 +1,45 @@
-package com.longruan.ftpanalysis.mq.model.hjjc;
+package com.longruan.ftpanalysis.mq.model.HnEntity;
 
 import com.longruan.ftpanalysis.batch.entity.FieldOrder;
+import com.longruan.ftpanalysis.batch.entity.MsgName;
+import com.longruan.ftpanalysis.mq.consts.BatchConstants;
+import com.longruan.ftpanalysis.mq.consts.MQConstants;
+import com.longruan.ftpanalysis.mq.model.MsgHead;
 
-import java.io.Serializable;
+@MsgName(job = "模拟量数据", filePath = "*AQMC", sysType = BatchConstants.SystemType.hjjc, exchangeName = MQConstants.ExChanges.SENSORMC)
+public class AnalogData extends MsgHead {
 
-public class SensordataInfomation_2 implements Serializable {
-
-    @FieldOrder(order = 1)
-    private String S1;    //测点编号
-    @FieldOrder(order = 2)
-    private String S2;    //测点数值类型编码
-    @FieldOrder(order = 3)
-    private String S3;    //监测类型编码
-    @FieldOrder(order = 4)
-    private String S4;    //分站编号
     @FieldOrder(order = 5)
-    private String S5;    //测点名称
+    private String S5; //
     @FieldOrder(order = 6)
-    private String S6;    //测点安装位置
+    private String S6; //
     @FieldOrder(order = 7)
-    private String S7;    //测点所属区域名称
+    private String S7; //
     @FieldOrder(order = 8)
-    private String S8;    //传感器所在区域的位置编码
+    private String S8; //
     @FieldOrder(order = 9)
-    private String S9;    //测点重要性
+    private String S9; //
     @FieldOrder(order = 10)
-    private String S10;    //开描述
+    private String S10; //
     @FieldOrder(order = 11)
-    private String S11;    //停描述
+    private String S11; //
     @FieldOrder(order = 12)
-    private String S12;    //报警状态
+    private String S12; //
     @FieldOrder(order = 13)
-    private String S13;    //解报状态
+    private String S13; //
     @FieldOrder(order = 14)
-    private String S14;    //断电状态
+    private String S14; //
     @FieldOrder(order = 15)
-    private String S15;    //复电状态
+    private String S15; //
     @FieldOrder(order = 16)
-    private String S16;    //传感器关联关系
+    private String S16; //
     @FieldOrder(order = 17)
-    private String S17;    //测点Y坐标
+    private String S17; //
     @FieldOrder(order = 18)
-    private String S18;    //测点X坐标
+    private String S18; //
+    @FieldOrder(order = 19)
+    private String S19; //
 
-
-    public String getS1() {
-        return S1;
-    }
-
-    public void setS1(String s1) {
-        S1 = s1;
-    }
-
-    public String getS2() {
-        return S2;
-    }
-
-    public void setS2(String s2) {
-        S2 = s2;
-    }
-
-    public String getS3() {
-        return S3;
-    }
-
-    public void setS3(String s3) {
-        S3 = s3;
-    }
-
-    public String getS4() {
-        return S4;
-    }
-
-    public void setS4(String s4) {
-        S4 = s4;
-    }
 
     public String getS5() {
         return S5;
@@ -186,5 +151,13 @@ public class SensordataInfomation_2 implements Serializable {
 
     public void setS18(String s18) {
         S18 = s18;
+    }
+
+    public String getS19() {
+        return S19;
+    }
+
+    public void setS19(String s19) {
+        S19 = s19;
     }
 }

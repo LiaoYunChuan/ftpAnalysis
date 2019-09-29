@@ -11,7 +11,6 @@ package com.longruan.ftpanalysis.mq.service;
  **/
 
 import com.longruan.ftpanalysis.mq.model.MQMsg;
-import com.longruan.ftpanalysis.mq.model.SendMsgCache;
 import com.longruan.ftpanalysis.mq.send.ISenderService;
 import com.longruan.ftpanalysis.mq.service.impl.MsgRedisService;
 import com.longruan.ftpanalysis.util.DateJsonValueProcessor;
@@ -46,7 +45,7 @@ public abstract class AMqUploadService  implements IMqUploadService {
         msg.setIdList(null);
         byte[] data = JSONObject.fromObject(msg,config).toString().getBytes(Charset.forName("UTF-8"));
         String messageId = senderService.send(exchange, routingKey, data);
-        msgRedisService.addDataToCache(messageId, new SendMsgCache(uploadBeanId,idList));
+//        msgRedisService.addDataToCache(messageId, new SendMsgCache(uploadBeanId,idList));
         return messageId;
     }
 

@@ -37,7 +37,6 @@ public class RabbitTemplateCallbackService implements RabbitTemplate.ConfirmCall
         EUploadFlag uploadFlag = ack ? EUploadFlag.上传成功 : EUploadFlag.上传失败;
         String messageId = correlationData.getId();
         System.err.println("消息 " + messageId + ","+ uploadFlag );
-        System.err.print(correlationData.getReturnedMessage());
 //        updateSendStatus(messageId, uploadFlag,cause);
     }
 

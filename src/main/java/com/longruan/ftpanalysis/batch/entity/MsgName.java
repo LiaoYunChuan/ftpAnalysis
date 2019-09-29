@@ -11,5 +11,4 @@ public @interface MsgName {
     String exchangeName();
     String filePath();
     String sysType();
-    Class head() default FileHead.class;
 }

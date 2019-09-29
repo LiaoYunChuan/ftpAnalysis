@@ -1,21 +1,14 @@
-package com.longruan.ftpanalysis.mq.model;
+package com.longruan.ftpanalysis.mq.model.HnEntity;
 
 import com.longruan.ftpanalysis.batch.entity.FieldOrder;
 import com.longruan.ftpanalysis.batch.entity.MsgName;
 import com.longruan.ftpanalysis.mq.consts.BatchConstants;
 import com.longruan.ftpanalysis.mq.consts.MQConstants;
+import com.longruan.ftpanalysis.mq.model.MsgHead;
 
-@MsgName(job = "测试数据",filePath = "*AQSS", sysType = BatchConstants.SystemType.hjjc, exchangeName = MQConstants.ExChanges.NC_SM_REALTIME_DATA)
-public class DemoTest {
+@MsgName(job = "累计量数据", filePath = "*AQLJ", sysType = BatchConstants.SystemType.hjjc, exchangeName = MQConstants.ExChanges.SENSOR_LJDATA)
+public class CumulantData extends MsgHead {
 
-    @FieldOrder(order = 1)
-    private String S1; //
-    @FieldOrder(order = 2)
-    private String S2; //
-    @FieldOrder(order = 3)
-    private String S3; //
-    @FieldOrder(order = 4)
-    private String S4; //
     @FieldOrder(order = 5)
     private String S5; //
     @FieldOrder(order = 6)
@@ -36,38 +29,17 @@ public class DemoTest {
     private String S13; //
     @FieldOrder(order = 14)
     private String S14; //
+    @FieldOrder(order = 15)
+    private String S15; //
+    @FieldOrder(order = 16)
+    private String S16; //
+    @FieldOrder(order = 17)
+    private String S17; //
+    @FieldOrder(order = 18)
+    private String S18; //
+    @FieldOrder(order = 19)
+    private String S19; //
 
-    public String getS1() {
-        return S1;
-    }
-
-    public void setS1(String s1) {
-        S1 = s1;
-    }
-
-    public String getS2() {
-        return S2;
-    }
-
-    public void setS2(String s2) {
-        S2 = s2;
-    }
-
-    public String getS3() {
-        return S3;
-    }
-
-    public void setS3(String s3) {
-        S3 = s3;
-    }
-
-    public String getS4() {
-        return S4;
-    }
-
-    public void setS4(String s4) {
-        S4 = s4;
-    }
 
     public String getS5() {
         return S5;
@@ -149,4 +121,43 @@ public class DemoTest {
         S14 = s14;
     }
 
+    public String getS15() {
+        return S15;
+    }
+
+    public void setS15(String s15) {
+        S15 = s15;
+    }
+
+    public String getS16() {
+        return S16;
+    }
+
+    public void setS16(String s16) {
+        S16 = s16;
+    }
+
+    public String getS17() {
+        return S17;
+    }
+
+    public void setS17(String s17) {
+        S17 = s17;
+    }
+
+    public String getS18() {
+        return S18;
+    }
+
+    public void setS18(String s18) {
+        S18 = s18;
+    }
+
+    public String getS19() {
+        return S19;
+    }
+
+    public void setS19(String s19) {
+        S19 = s19;
+    }
 }

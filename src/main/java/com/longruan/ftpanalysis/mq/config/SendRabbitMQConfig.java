@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
 /**
  * 服务器推送配置
@@ -22,7 +21,6 @@ import org.springframework.context.annotation.PropertySource;
  * @since 1.0.0
  **/
 @Configuration(value = "sendRabbitMQConfig")
-@PropertySource("classpath:mq.properties")
 public class SendRabbitMQConfig {
     /**
      * 接收服务器地址

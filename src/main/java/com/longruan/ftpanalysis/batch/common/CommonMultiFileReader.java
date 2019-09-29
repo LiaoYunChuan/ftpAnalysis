@@ -19,7 +19,7 @@ public class CommonMultiFileReader extends MultiResourceItemReader {
         Resource[] resources = patternResolver.getResources(readPath);//动态读取资源列表
         System.err.println("文件个数: " + resources.length);
         setResources(resources);
-        setDelegate(new CommonFileReader(msgName.head(), clz));
+        setDelegate(new CommonFileReader(clz));
     }
 
 }

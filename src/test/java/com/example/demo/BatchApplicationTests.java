@@ -3,7 +3,7 @@ package com.example.demo;
 import com.longruan.ftpanalysis.FmftpApplication;
 import com.longruan.ftpanalysis.batch.common.CommonJobConfig;
 import com.longruan.ftpanalysis.batch.entity.MsgName;
-import com.longruan.ftpanalysis.mq.model.DemoTest;
+import com.longruan.ftpanalysis.mq.model.HnEntity.RealTimeData;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -40,10 +40,14 @@ public class BatchApplicationTests {
 
     @Test
     public void testHjss() throws Exception {
-//        method(SensordataInfomation.class);
-//        method(CompanyInfomation_new.class);
-
-        method(DemoTest.class);
+//        method(AlarmData.class);
+//        method(AnalogData.class);
+//        method(CumulantData.class);
+//        method(MinuteData.class);
+        method(RealTimeData.class);
+//        method(SensorRefence.class);
+//        method(Station.class);
+//        method(SwitchData.class);
     }
 
     @Async
