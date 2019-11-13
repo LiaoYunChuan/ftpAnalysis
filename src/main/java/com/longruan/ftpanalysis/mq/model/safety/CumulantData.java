@@ -1,4 +1,4 @@
-package com.longruan.ftpanalysis.mq.model.HnEntity;
+package com.longruan.ftpanalysis.mq.model.safety;
 
 import com.longruan.ftpanalysis.batch.entity.FieldOrder;
 import com.longruan.ftpanalysis.batch.entity.MsgName;
@@ -6,8 +6,8 @@ import com.longruan.ftpanalysis.mq.consts.BatchConstants;
 import com.longruan.ftpanalysis.mq.consts.MQConstants;
 import com.longruan.ftpanalysis.mq.model.MsgHead;
 
-@MsgName(job = "分钟数据", filePath = "*AQFZ", sysType = BatchConstants.SystemType.hjjc, exchangeName = MQConstants.ExChanges.SENSOR_TJ5DATA)
-public class MinuteData extends MsgHead {
+@MsgName(job = "累计量数据", filePath = "*AQLJ", sysType = BatchConstants.SystemType.hjjc, exchangeName = MQConstants.ExChanges.SENSOR_LJDATA)
+public class CumulantData extends MsgHead {
 
     @FieldOrder(order = 5)
     private String S5; //
@@ -37,6 +37,8 @@ public class MinuteData extends MsgHead {
     private String S17; //
     @FieldOrder(order = 18)
     private String S18; //
+    @FieldOrder(order = 19)
+    private String S19; //
 
 
     public String getS5() {
@@ -149,5 +151,13 @@ public class MinuteData extends MsgHead {
 
     public void setS18(String s18) {
         S18 = s18;
+    }
+
+    public String getS19() {
+        return S19;
+    }
+
+    public void setS19(String s19) {
+        S19 = s19;
     }
 }

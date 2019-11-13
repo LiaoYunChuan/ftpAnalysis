@@ -1,4 +1,4 @@
-package com.longruan.ftpanalysis.mq.model.HnEntity;
+package com.longruan.ftpanalysis.mq.model.safety;
 
 import com.longruan.ftpanalysis.batch.entity.FieldOrder;
 import com.longruan.ftpanalysis.batch.entity.MsgName;

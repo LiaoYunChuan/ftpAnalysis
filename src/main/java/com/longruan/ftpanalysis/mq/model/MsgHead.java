@@ -1,9 +1,6 @@
 package com.longruan.ftpanalysis.mq.model;
 
 import com.longruan.ftpanalysis.batch.entity.FieldOrder;
-import org.apache.commons.lang3.time.DateFormatUtils;
-
-import java.util.Date;
 
 /**
  * 消息头
@@ -16,18 +13,17 @@ import java.util.Date;
  **/
 public class MsgHead {
 
-    @FieldOrder(order = 1)
     String province;// 省
-    @FieldOrder(order = 2)
+    @FieldOrder(order = 1)
     String city;// 市
-    @FieldOrder(order = 3)
+    @FieldOrder(order = 2)
     String county;// 县
-    @FieldOrder(order = 4)
+    @FieldOrder(order = 3)
     String mineId;// 矿
-    private String upTime;
-
+    private String time;
 
     public String getProvince() {
+        this.province="安徽省";
         return province;
     }
 
@@ -59,11 +55,11 @@ public class MsgHead {
         this.mineId = mineId;
     }
 
-    public String getUpTime() {
-        return DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss");
+    public String getTime() {
+        return time;
     }
 
-    public void setUpTime(String upTime) {
-        this.upTime = upTime;
+    public void setTime(String time) {
+        this.time = time;
     }
 }
