@@ -13,12 +13,13 @@ import com.longruan.ftpanalysis.batch.entity.FieldOrder;
  **/
 public class MsgHead {
 
-    String province;// 省
     @FieldOrder(order = 1)
-    String city;// 市
+    String province;// 省
     @FieldOrder(order = 2)
-    String county;// 县
+    String city;// 市
     @FieldOrder(order = 3)
+    String county;// 县
+    @FieldOrder(order = 4)
     String mineId;// 矿
     private String time;
 

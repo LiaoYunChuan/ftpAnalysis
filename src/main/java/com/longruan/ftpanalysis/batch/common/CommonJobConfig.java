@@ -90,14 +90,14 @@ public class CommonJobConfig {
                 .chunk(5000)//批处理每次提交5000条数据
                 .reader(reader(stepMark,jobClass))
 //                .processor(processor)  //指定ItemProcessor
-                .faultTolerant()
+//                .faultTolerant()
+//                .skip(Exception.class)
+//                .skipLimit(500)         //一共允许跳过200次异常
                 .writer(writer(stepMark,jobClass))//给step绑定writer
 //                .faultTolerant()
 //                .retry(Exception.class)   // 重试
 //                .noRetry(ParseException.class)
 //                .retryLimit(1)           //每条记录重试一次
-//                .skip(Exception.class)
-//                .skipLimit(200)         //一共允许跳过200次异常
 //                .taskExecutor(new SimpleAsyncTaskExecutor()) //设置每个Job通过并发方式执行，一般来讲一个Job就让它串行完成的好
 //                .throttleLimit(10)        //并发任务数为 10,默认为4
                 .build();
