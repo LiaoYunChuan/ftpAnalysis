@@ -90,9 +90,9 @@ public class CommonJobConfig {
                 .chunk(5000)//批处理每次提交5000条数据
                 .reader(reader(stepMark,jobClass))
 //                .processor(processor)  //指定ItemProcessor
-//                .faultTolerant()
-//                .skip(Exception.class)
-//                .skipLimit(500)         //一共允许跳过200次异常
+                .faultTolerant()
+                .skip(Exception.class)
+                .skipLimit(500)         //一共允许跳过200次异常
                 .writer(writer(stepMark,jobClass))//给step绑定writer
 //                .faultTolerant()
 //                .retry(Exception.class)   // 重试
