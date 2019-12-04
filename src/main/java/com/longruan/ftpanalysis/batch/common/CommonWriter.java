@@ -40,7 +40,7 @@ public class CommonWriter implements ItemWriter {
         if (msgName == null) throw new ClassNotFoundException();
 
         //转移到日志目录
-//         asynWriteFileMethod();
+         asynWriteFileMethod();
 
         //发送消息
         asyncMethod(items);
