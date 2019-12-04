@@ -10,69 +10,71 @@ import com.longruan.ftpanalysis.mq.model.MsgHead;
 public class SensorRefence extends MsgHead {
 
     @FieldOrder(order = 5)
-    private String S5; //
+    private String station_id; //分站编码
     @FieldOrder(order = 6)
-    private String S6; //
+    private String sensor_id; //传感器编码
     @FieldOrder(order = 7)
-    private String S7; //
+    private String to_station_id; //关联分站编码
     @FieldOrder(order = 8)
-    private String S8; //
+    private String to_sensor_id; //关联传感器编码
     @FieldOrder(order = 9)
-    private String S9; //
+    private String sensor_relation; //关系类型
     @FieldOrder(order = 10)
-    private String S10; //
+    private String time; //数据生成时间
     @FieldOrder(order = 11)
-    private String S11; //
+    private String S11; //备用字段 1
     @FieldOrder(order = 12)
-    private String S12; //
+    private String S12; //备用字段 2
 
 
-    public String getS5() {
-        return S5;
+    public String getStation_id() {
+        return station_id;
     }
 
-    public void setS5(String s5) {
-        S5 = s5;
+    public void setStation_id(String station_id) {
+        this.station_id = station_id;
     }
 
-    public String getS6() {
-        return S6;
+    public String getSensor_id() {
+        return sensor_id;
     }
 
-    public void setS6(String s6) {
-        S6 = s6;
+    public void setSensor_id(String sensor_id) {
+        this.sensor_id = sensor_id;
     }
 
-    public String getS7() {
-        return S7;
+    public String getTo_station_id() {
+        return to_station_id;
     }
 
-    public void setS7(String s7) {
-        S7 = s7;
+    public void setTo_station_id(String to_station_id) {
+        this.to_station_id = to_station_id;
     }
 
-    public String getS8() {
-        return S8;
+    public String getTo_sensor_id() {
+        return to_sensor_id;
     }
 
-    public void setS8(String s8) {
-        S8 = s8;
+    public void setTo_sensor_id(String to_sensor_id) {
+        this.to_sensor_id = to_sensor_id;
     }
 
-    public String getS9() {
-        return S9;
+    public String getSensor_relation() {
+        return sensor_relation;
     }
 
-    public void setS9(String s9) {
-        S9 = s9;
+    public void setSensor_relation(String sensor_relation) {
+        this.sensor_relation = sensor_relation;
     }
 
-    public String getS10() {
-        return S10;
+    @Override
+    public String getTime() {
+        return time;
     }
 
-    public void setS10(String s10) {
-        S10 = s10;
+    @Override
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getS11() {

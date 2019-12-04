@@ -9,16 +9,16 @@ public final class MQConstants {
     private interface QueueName {
 
 //        String REALTIME_DATA = "SENSOR_RTDATA";
-        String REALTIME_DATA = "EVENT.TEST";
-        String STATION = "STATION";
+        String REALTIME_DATA = "SENSOR_RTDATA";
+        String STATION = "SENSOR_STATION";
         String SENSORREF = "SENSOR_REF";
         String SENSORMC = "SENSOR_MC";
         String SENSORSWITCH = "SENSOR_KC";
         String SENSOR_RTDATA_HIS = "SENSOR_RTDATA_HIS";
         String SENSOR_WARNDATA = "SENSOR_WARN";
         String SENSOR_WARNDATA_HIS = "SENSOR_WARNDATA_HIS";
-        String SENSOR_LJDATA = "SENSOR_LJDATA";
-        String SENSOR_TJ5DATA = "SENSOR_TJDATA";
+        String SENSOR_LJDATA = "SENSOR_ACUM";
+        String SENSOR_TJ5DATA = "SENSOR_ANALOG";
     }
 
     /***

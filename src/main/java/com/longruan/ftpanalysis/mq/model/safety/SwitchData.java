@@ -11,69 +11,70 @@ public class SwitchData extends MsgHead {
 
 
     @FieldOrder(order = 5)
-    private String S5; //
+    private String sub_station; //分站编码
     @FieldOrder(order = 6)
-    private String S6; //
+    private String sensor_id; //传感器编码
     @FieldOrder(order = 7)
-    private String S7; //
+    private String sensor_data_type; //传感器监测类型
     @FieldOrder(order = 8)
-    private String S8; //
+    private String location; //监测地点
     @FieldOrder(order = 9)
-    private String S9; //
+    private String area_name; //断电区域
     @FieldOrder(order = 10)
-    private String S10; //
+    private String time; //数据生成时间
     @FieldOrder(order = 11)
-    private String S11; //
+    private String S11; //备用字段 1
     @FieldOrder(order = 12)
-    private String S12; //
+    private String S12; //备用字段 2
 
-
-    public String getS5() {
-        return S5;
+    public String getSub_station() {
+        return sub_station;
     }
 
-    public void setS5(String s5) {
-        S5 = s5;
+    public void setSub_station(String sub_station) {
+        this.sub_station = sub_station;
     }
 
-    public String getS6() {
-        return S6;
+    public String getSensor_id() {
+        return sensor_id;
     }
 
-    public void setS6(String s6) {
-        S6 = s6;
+    public void setSensor_id(String sensor_id) {
+        this.sensor_id = sensor_id;
     }
 
-    public String getS7() {
-        return S7;
+    public String getSensor_data_type() {
+        return sensor_data_type;
     }
 
-    public void setS7(String s7) {
-        S7 = s7;
+    public void setSensor_data_type(String sensor_data_type) {
+        this.sensor_data_type = sensor_data_type;
     }
 
-    public String getS8() {
-        return S8;
+    public String getLocation() {
+        return location;
     }
 
-    public void setS8(String s8) {
-        S8 = s8;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public String getS9() {
-        return S9;
+    public String getArea_name() {
+        return area_name;
     }
 
-    public void setS9(String s9) {
-        S9 = s9;
+    public void setArea_name(String area_name) {
+        this.area_name = area_name;
     }
 
-    public String getS10() {
-        return S10;
+    @Override
+    public String getTime() {
+        return time;
     }
 
-    public void setS10(String s10) {
-        S10 = s10;
+    @Override
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getS11() {

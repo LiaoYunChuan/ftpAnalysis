@@ -10,49 +10,49 @@ import com.longruan.ftpanalysis.mq.model.MsgHead;
 public class MinuteData extends MsgHead {
 
     @FieldOrder(order = 5)
-    private String S5; //
+    private String station_id; //分站编码
     @FieldOrder(order = 6)
-    private String S6; //
+    private String sensor_id; //传感器编码
     @FieldOrder(order = 7)
-    private String S7; //
+    private String S7; //传感器监测类型
     @FieldOrder(order = 8)
-    private String S8; //
+    private String S8; //监测地点
     @FieldOrder(order = 9)
-    private String S9; //
+    private String station_status; //分站运行状态
     @FieldOrder(order = 10)
-    private String S10; //
+    private String sensor_status; //传感器运行状态
     @FieldOrder(order = 11)
-    private String S11; //
+    private String avg_value; //5 分钟内平均值
     @FieldOrder(order = 12)
-    private String S12; //
+    private String max_value; //5 分钟内最大值
     @FieldOrder(order = 13)
-    private String S13; //
+    private String max_value_time; //5 分钟内最大值时刻
     @FieldOrder(order = 14)
-    private String S14; //
+    private String min_value; //5 分钟内最小值
     @FieldOrder(order = 15)
-    private String S15; //
+    private String min_value_time; //5 分钟内最小值时刻
     @FieldOrder(order = 16)
-    private String S16; //
+    private String time; //数据生成时间
     @FieldOrder(order = 17)
-    private String S17; //
+    private String S17; //备用字段 1
     @FieldOrder(order = 18)
-    private String S18; //
+    private String S18; //备用字段 2
 
 
-    public String getS5() {
-        return S5;
+    public String getStation_id() {
+        return station_id;
     }
 
-    public void setS5(String s5) {
-        S5 = s5;
+    public void setStation_id(String station_id) {
+        this.station_id = station_id;
     }
 
-    public String getS6() {
-        return S6;
+    public String getSensor_id() {
+        return sensor_id;
     }
 
-    public void setS6(String s6) {
-        S6 = s6;
+    public void setSensor_id(String sensor_id) {
+        this.sensor_id = sensor_id;
     }
 
     public String getS7() {
@@ -71,68 +71,70 @@ public class MinuteData extends MsgHead {
         S8 = s8;
     }
 
-    public String getS9() {
-        return S9;
+    public String getStation_status() {
+        return station_status;
     }
 
-    public void setS9(String s9) {
-        S9 = s9;
+    public void setStation_status(String station_status) {
+        this.station_status = station_status;
     }
 
-    public String getS10() {
-        return S10;
+    public String getSensor_status() {
+        return sensor_status;
     }
 
-    public void setS10(String s10) {
-        S10 = s10;
+    public void setSensor_status(String sensor_status) {
+        this.sensor_status = sensor_status;
     }
 
-    public String getS11() {
-        return S11;
+    public String getAvg_value() {
+        return avg_value;
     }
 
-    public void setS11(String s11) {
-        S11 = s11;
+    public void setAvg_value(String avg_value) {
+        this.avg_value = avg_value;
     }
 
-    public String getS12() {
-        return S12;
+    public String getMax_value() {
+        return max_value;
     }
 
-    public void setS12(String s12) {
-        S12 = s12;
+    public void setMax_value(String max_value) {
+        this.max_value = max_value;
     }
 
-    public String getS13() {
-        return S13;
+    public String getMax_value_time() {
+        return max_value_time;
     }
 
-    public void setS13(String s13) {
-        S13 = s13;
+    public void setMax_value_time(String max_value_time) {
+        this.max_value_time = max_value_time;
     }
 
-    public String getS14() {
-        return S14;
+    public String getMin_value() {
+        return min_value;
     }
 
-    public void setS14(String s14) {
-        S14 = s14;
+    public void setMin_value(String min_value) {
+        this.min_value = min_value;
     }
 
-    public String getS15() {
-        return S15;
+    public String getMin_value_time() {
+        return min_value_time;
     }
 
-    public void setS15(String s15) {
-        S15 = s15;
+    public void setMin_value_time(String min_value_time) {
+        this.min_value_time = min_value_time;
     }
 
-    public String getS16() {
-        return S16;
+    @Override
+    public String getTime() {
+        return time;
     }
 
-    public void setS16(String s16) {
-        S16 = s16;
+    @Override
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getS17() {

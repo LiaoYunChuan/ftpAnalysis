@@ -10,139 +10,141 @@ import com.longruan.ftpanalysis.mq.model.MsgHead;
 public class AnalogData extends MsgHead {
 
     @FieldOrder(order = 5)
-    private String S5; //
+    private String station_id; //分站编码
     @FieldOrder(order = 6)
-    private String S6; //
+    private String sensor_id; //传感器编码
     @FieldOrder(order = 7)
-    private String S7; //
+    private String sensor_data_type; //传感器监测类型
     @FieldOrder(order = 8)
-    private String S8; //
+    private String terminal; //传感器设置地点编号
     @FieldOrder(order = 9)
-    private String S9; //
+    private String location; //监测地点
     @FieldOrder(order = 10)
-    private String S10; //
+    private String unit; //单位
     @FieldOrder(order = 11)
-    private String S11; //
+    private String measure_min; //量程下限
     @FieldOrder(order = 12)
-    private String S12; //
+    private String measure_max; //量程上限
     @FieldOrder(order = 13)
-    private String S13; //
+    private String up_warn_val; //报警值
     @FieldOrder(order = 14)
-    private String S14; //
+    private String up_power_cut_val; //断电值
     @FieldOrder(order = 15)
-    private String S15; //
+    private String up_power_restore_val; //复电值
     @FieldOrder(order = 16)
-    private String S16; //
+    private String area_name; //断电区域
     @FieldOrder(order = 17)
-    private String S17; //
+    private String time; //数据生成时间
     @FieldOrder(order = 18)
-    private String S18; //
+    private String S18; //备用字段 1
     @FieldOrder(order = 19)
-    private String S19; //
+    private String S19; //备用字段 2
 
 
-    public String getS5() {
-        return S5;
+    public String getStation_id() {
+        return station_id;
     }
 
-    public void setS5(String s5) {
-        S5 = s5;
+    public void setStation_id(String station_id) {
+        this.station_id = station_id;
     }
 
-    public String getS6() {
-        return S6;
+    public String getSensor_id() {
+        return sensor_id;
     }
 
-    public void setS6(String s6) {
-        S6 = s6;
+    public void setSensor_id(String sensor_id) {
+        this.sensor_id = sensor_id;
     }
 
-    public String getS7() {
-        return S7;
+    public String getSensor_data_type() {
+        return sensor_data_type;
     }
 
-    public void setS7(String s7) {
-        S7 = s7;
+    public void setSensor_data_type(String sensor_data_type) {
+        this.sensor_data_type = sensor_data_type;
     }
 
-    public String getS8() {
-        return S8;
+    public String getTerminal() {
+        return terminal;
     }
 
-    public void setS8(String s8) {
-        S8 = s8;
+    public void setTerminal(String terminal) {
+        this.terminal = terminal;
     }
 
-    public String getS9() {
-        return S9;
+    public String getLocation() {
+        return location;
     }
 
-    public void setS9(String s9) {
-        S9 = s9;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public String getS10() {
-        return S10;
+    public String getUnit() {
+        return unit;
     }
 
-    public void setS10(String s10) {
-        S10 = s10;
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
-    public String getS11() {
-        return S11;
+    public String getMeasure_min() {
+        return measure_min;
     }
 
-    public void setS11(String s11) {
-        S11 = s11;
+    public void setMeasure_min(String measure_min) {
+        this.measure_min = measure_min;
     }
 
-    public String getS12() {
-        return S12;
+    public String getMeasure_max() {
+        return measure_max;
     }
 
-    public void setS12(String s12) {
-        S12 = s12;
+    public void setMeasure_max(String measure_max) {
+        this.measure_max = measure_max;
     }
 
-    public String getS13() {
-        return S13;
+    public String getUp_warn_val() {
+        return up_warn_val;
     }
 
-    public void setS13(String s13) {
-        S13 = s13;
+    public void setUp_warn_val(String up_warn_val) {
+        this.up_warn_val = up_warn_val;
     }
 
-    public String getS14() {
-        return S14;
+    public String getUp_power_cut_val() {
+        return up_power_cut_val;
     }
 
-    public void setS14(String s14) {
-        S14 = s14;
+    public void setUp_power_cut_val(String up_power_cut_val) {
+        this.up_power_cut_val = up_power_cut_val;
     }
 
-    public String getS15() {
-        return S15;
+    public String getUp_power_restore_val() {
+        return up_power_restore_val;
     }
 
-    public void setS15(String s15) {
-        S15 = s15;
+    public void setUp_power_restore_val(String up_power_restore_val) {
+        this.up_power_restore_val = up_power_restore_val;
     }
 
-    public String getS16() {
-        return S16;
+    public String getArea_name() {
+        return area_name;
     }
 
-    public void setS16(String s16) {
-        S16 = s16;
+    public void setArea_name(String area_name) {
+        this.area_name = area_name;
     }
 
-    public String getS17() {
-        return S17;
+    @Override
+    public String getTime() {
+        return time;
     }
 
-    public void setS17(String s17) {
-        S17 = s17;
+    @Override
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getS18() {

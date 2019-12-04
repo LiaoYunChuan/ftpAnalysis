@@ -20,7 +20,7 @@ public class MsgHead {
     @FieldOrder(order = 3)
     String county;// 县
     @FieldOrder(order = 4)
-    String mineId;// 矿
+    String mine_id;// 矿
     private String time;
 
     public String getProvince() {
@@ -48,12 +48,12 @@ public class MsgHead {
         this.county = county;
     }
 
-    public String getMineId() {
-        return mineId;
+    public String getMine_id() {
+        return mine_id;
     }
 
-    public void setMineId(String mineId) {
-        this.mineId = mineId;
+    public void setMine_id(String mine_id) {
+        this.mine_id = mine_id;
     }
 
     public String getTime() {

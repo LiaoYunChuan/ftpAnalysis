@@ -15,9 +15,9 @@ import java.text.ParseException;
 public class RealTimeData extends MsgHead {
 
     @FieldOrder(order = 5)
-    String station_id;//分站编码+
+    String station_id;//分站编码
     @FieldOrder(order = 6)
-    String sensor_id;//传感器编码+
+    String sensor_id;//传感器编码
     @FieldOrder(order = 7)
     String sensor_type;//传感器监测类型
     @FieldOrder(order = 8)
@@ -25,7 +25,7 @@ public class RealTimeData extends MsgHead {
     @FieldOrder(order = 9)
     Integer station_status;//分站状态
     @FieldOrder(order = 10)
-    String sensor_status;//传感器状态+
+    String sensor_status;//传感器状态
     @FieldOrder(order = 11)
     private String monitor_val;//监测值
     @FieldOrder(order = 12)
@@ -100,7 +100,7 @@ public class RealTimeData extends MsgHead {
     public String getTime() {
         try {
             if(!hasFomatTime){
-                this.time = DateFormatUtils.format(DateUtils.parseDate(this.time, "yyyy-MM-dd/HH:mm:ss"), "yyyy-MM-dd HH:mm:ss");
+                this.time = DateFormatUtils.format(DateUtils.parseDate(this.time, "yyyy-MM-dd HH:mm:ss"), "yyyy-MM-dd/HH:mm:ss");
                 this.hasFomatTime=true;
             }
         } catch (ParseException e) {

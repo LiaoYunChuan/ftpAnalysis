@@ -15,9 +15,9 @@ import java.util.Date;
 public class AlarmData extends MsgHead {
 
     @FieldOrder(order = 5)
-    String station_id;//分站编码+
+    String station_id;//分站编码
     @FieldOrder(order = 6)
-    String sensor_id;//传感器编码+
+    String sensor_id;//传感器编码
     @FieldOrder(order = 7)
     String sensor_type;//传感器监测类型
     @FieldOrder(order = 8)
@@ -25,17 +25,17 @@ public class AlarmData extends MsgHead {
     @FieldOrder(order = 9)
     Integer station_status;//分站状态
     @FieldOrder(order = 10)
-    String sensor_status;//传感器状态+
+    String sensor_status;//传感器状态
     @FieldOrder(order = 11)
     String sensor_data_type;//传感器数据类型
     @FieldOrder(order = 12)
-    String sensor_status_name;//分站状态
+    String warn_type;//分站状态
     @FieldOrder(order = 13)
-    String time;//监测时间+
+    String time;//监测时间
     @FieldOrder(order = 14)
-    String arg1;//分站状态
+    String arg1;//备用字段1
     @FieldOrder(order = 15)
-    String arg2;//监测时间+
+    String arg2;//备用字段2
     Date sensor_time;//传感器时间
     Double warn_val;//报警门限
     Double safe_val;
@@ -108,17 +108,17 @@ public class AlarmData extends MsgHead {
         this.sensor_data_type = sensor_data_type;
     }
 
-    public String getSensor_status_name() {
-        return sensor_status_name;
+    public String getWarn_type() {
+        return warn_type;
     }
 
-    public void setSensor_status_name(String sensor_status_name) {
-        this.sensor_status_name = sensor_status_name;
+    public void setWarn_type(String warn_type) {
+        this.warn_type = warn_type;
     }
 
     public String getTime() {
         try {
-            this.time = DateFormatUtils.format(DateUtils.parseDate(this.time,"yyyy-MM-dd/HH:mm:ss"),"yyyy-MM-dd/HH:mm:ss");
+            this.time = DateFormatUtils.format(DateUtils.parseDate(this.time,"yyyy-MM-dd HH:mm:ss"),"yyyy-MM-dd/HH:mm:ss");
         } catch (ParseException e) {
             e.printStackTrace();
         }
