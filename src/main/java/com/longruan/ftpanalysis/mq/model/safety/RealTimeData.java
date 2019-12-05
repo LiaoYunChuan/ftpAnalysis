@@ -15,25 +15,25 @@ import java.text.ParseException;
 public class RealTimeData extends MsgHead {
 
     @FieldOrder(order = 5)
-    String station_id;//分站编码
+    private String station_id;//分站编码
     @FieldOrder(order = 6)
-    String sensor_id;//传感器编码
+    private String sensor_id;//传感器编码
     @FieldOrder(order = 7)
-    String sensor_type;//传感器监测类型
+    private String sensor_type;//传感器监测类型
     @FieldOrder(order = 8)
-    String location;//监测地点
+    private String location;//监测地点
     @FieldOrder(order = 9)
-    Integer station_status;//分站状态
+    private Integer station_status;//分站状态
     @FieldOrder(order = 10)
-    String sensor_status;//传感器状态
+    private String sensor_status;//传感器状态
     @FieldOrder(order = 11)
     private String monitor_val;//监测值
     @FieldOrder(order = 12)
     private String time;//监测时间
     @FieldOrder(order = 13)
-    String arg1;
+    private String arg1;
     @FieldOrder(order = 14)
-    String arg2;
+    private String arg2;
 
     public String getStation_id() {
         return station_id;

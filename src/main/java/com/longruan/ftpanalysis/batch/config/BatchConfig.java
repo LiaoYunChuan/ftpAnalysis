@@ -12,7 +12,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import java.util.Map;
 
 @Configuration("batchConfig")
-@PropertySource("classpath:batchconfig.properties")
+@PropertySource("classpath:application.properties")
 public class BatchConfig {
 
     @Value("${msg.company.orgcode.mapper}")
