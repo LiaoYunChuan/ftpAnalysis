@@ -14,11 +14,11 @@ public class Station extends MsgHead {
 
 
     @FieldOrder(order = 5)
-    String station_id;//分站
+    private String station_id;//分站
     @FieldOrder(order = 6)
-    String location;//监测地点
+    private String location;//监测地点
     @JsonFormat(pattern = "yyyy-MM-dd/HH:mm:ss", timezone = "GMT+8")
-    Timestamp snap_time;//监测时间
+    private Timestamp snap_time;//监测时间
     @FieldOrder(order = 7)
     private String arg1; //
     @FieldOrder(order = 8)

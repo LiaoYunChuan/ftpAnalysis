@@ -12,27 +12,27 @@ import java.util.Date;
 public class AlarmData extends MsgHead {
 
     @FieldOrder(order = 5)
-    String station_id;//分站编码
+    private String station_id;//分站编码
     @FieldOrder(order = 6)
-    String sensor_id;//传感器编码
+    private String sensor_id;//传感器编码
     @FieldOrder(order = 7)
-    String sensor_type;//传感器监测类型
+    private String sensor_type;//传感器监测类型
     @FieldOrder(order = 8)
-    String location;//监测地点
+    private String location;//监测地点
     @FieldOrder(order = 9)
-    Integer station_status;//分站状态
+    private Integer station_status;//分站状态
     @FieldOrder(order = 10)
-    String sensor_status;//传感器状态
+    private String sensor_status;//传感器状态
     @FieldOrder(order = 11)
-    String sensor_data_type;//传感器数据类型
+    private String sensor_data_type;//传感器数据类型
     @FieldOrder(order = 12)
-    String warn_type;//分站状态
+    private String warn_type;//分站状态
     @FieldOrder(order = 13)
-    String time;//监测时间
+    private String time;//监测时间
     @FieldOrder(order = 14)
-    String arg1;//备用字段1
+    private String arg1;//备用字段1
     @FieldOrder(order = 15)
-    String arg2;//备用字段2
+    private String arg2;//备用字段2
     Date sensor_time;//传感器时间
     Double warn_val;//报警门限
     Double safe_val;
