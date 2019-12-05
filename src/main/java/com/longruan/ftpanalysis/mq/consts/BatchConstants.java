@@ -7,6 +7,6 @@ public final class BatchConstants {
     public interface SystemType {
         final String hjjc="hjjc";
         final String rydw="rydw";
-
+        final String zdh="zdh";//自动化
     }
 }
