@@ -3,7 +3,8 @@ package com.example.demo;
 import com.longruan.ftpanalysis.FmftpApplication;
 import com.longruan.ftpanalysis.batch.common.CommonJobConfig;
 import com.longruan.ftpanalysis.batch.entity.MsgName;
-import com.longruan.ftpanalysis.mq.model.safety.RealTimeData;
+import com.longruan.ftpanalysis.mq.model.safety.AnalogData;
+import com.longruan.ftpanalysis.mq.model.safety.SwitchData;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -41,13 +42,13 @@ public class BatchApplicationTests {
     @Test
     public void testHjss() throws Exception {
 //        method(AlarmData.class);//正常2 添加唯一键
-//        method(AnalogData.class);//正常2  sensor添加唯一键
+        method(AnalogData.class);//正常2  sensor添加唯一键
 //        method(CumulantData.class);//正常2
 //        method(MinuteData.class);//无数据
-        method(RealTimeData.class);//正常2
+//        method(RealTimeData.class);//正常2
 //        method(SensorRefence.class);//正常2  添加唯一键
 //        method(Station.class);//正常2
-//        method(SwitchData.class);//正常2
+        method(SwitchData.class);//正常2
     }
 
     @Async

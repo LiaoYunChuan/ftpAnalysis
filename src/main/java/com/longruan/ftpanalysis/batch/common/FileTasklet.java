@@ -9,6 +9,8 @@ import com.longruan.ftpanalysis.mq.model.MsgHead;
 import com.longruan.ftpanalysis.mq.send.ISenderService;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.scope.context.ChunkContext;
@@ -40,6 +42,7 @@ import java.util.stream.Collectors;
 @StepScope
 public class FileTasklet implements Tasklet {
 
+    Logger log = LoggerFactory.getLogger(this.getClass());
 
     private final Class dataClz;
     private final ISenderService iSenderService;
@@ -58,9 +61,9 @@ public class FileTasklet implements Tasklet {
         if (this.msgName == null) throw new ClassNotFoundException();
         PathMatchingResourcePatternResolver patternResolver = new PathMatchingResourcePatternResolver();
         String readPath = "file:" + batchConfig.getSystemPath(msgName.sysType()) + "/" + stepMark + "/" + msgName.filePath();
-        System.err.println("读取文件路径: " + readPath);
+        log.info("读取文件路径: " + readPath);
         this.resources = patternResolver.getResources(readPath);//动态读取资源列表
-        if (resources.length == 0) System.err.println("暂无【" + msgName.filePath() + "】文件");
+        if (resources.length == 0) log.info("暂无【" + msgName.filePath() + "】文件");
         totalRes = resources.length;
     }
 
@@ -90,8 +93,8 @@ public class FileTasklet implements Tasklet {
         Map<String, LineTokenizer> lineTokenizers = new HashMap<>();
         Map<String, FieldSetMapper> fieldSetMappers = new HashMap<>();
 
-        System.err.println("读取方式  : ");
-        System.err.println("           dataClz : " + dataClz);
+        log.info("读取方式  : ");
+        log.info("   dataClz : " + dataClz);
         {
             String[] dataField = getFieldStr(dataClz);
             String dataTokenizers = Arrays.stream(dataField).map(e -> "*").collect(Collectors.joining(";"));
@@ -101,8 +104,8 @@ public class FileTasklet implements Tasklet {
             fieldSetMappers.put(dataTokenizers, new BeanWrapperFieldSetMapper() {{
                 setTargetType(dataClz);
             }});
-            System.err.println("           dataTokenizers : " + dataTokenizers);
-            System.err.println("           dataField : " + JSON.toJSONString(dataField));
+            log.info("  dataTokenizers : " + dataTokenizers);
+            log.info("  dataField : " + JSON.toJSONString(dataField));
         }
 
         lineMapper.setTokenizers(lineTokenizers);
@@ -110,7 +113,6 @@ public class FileTasklet implements Tasklet {
         reader.setLineMapper(lineMapper);
         reader.open(new ExecutionContext());
         List items = new ArrayList<>();
-
         MQMsg mQMsg = new MQMsg();
         MsgHead msgHead = new MsgHead();
         int i = 0;
@@ -121,6 +123,7 @@ public class FileTasklet implements Tasklet {
                 obj = reader.read();
                 if (obj == null) {
                     flag = false;
+                    break;
                 } else {
                     items.add(obj);
                     if (i == 0) {
@@ -131,21 +134,19 @@ public class FileTasklet implements Tasklet {
                         Method m = BeanUtils.findMethod(MsgHead.class, "setMine_id", String.class);
                         if (m != null) m.invoke(obj, mineidMapped);
                     }
+                    i++;
                 }
             } catch (Exception e) {
-                System.err.println(e.getMessage());
+                log.error(e.getMessage());
             }
-            i++;
         }
-
+        reader.close();
         mQMsg.setHead(msgHead);
         mQMsg.setData(items);
-
-
-        //转移到日志目录
-//         asynWriteFileMethod();
-//        //发送消息
+        //发送消息
         asyncMethod(mQMsg, resIndex);
+        //转移到日志目录
+        asynWriteFileMethod(r);
     }
 
     public static String[] getSelfFieldStr(Class clz) {
@@ -160,41 +161,32 @@ public class FileTasklet implements Tasklet {
                 .map(Field::getName).toArray(String[]::new);
     }
 
-
-    @Async
-    public void asynWriteFileMethod() {
-
-        PathMatchingResourcePatternResolver patternResolver = new PathMatchingResourcePatternResolver();
-        Resource[] resources = new Resource[0];//动态读取资源列表
-        try {
-
-            String readPath = "file:" + batchConfig.getSystemPath(msgName.sysType()) + "/" + stepMark + "/" + msgName.filePath();
-            String logBasePath = batchConfig.getLogPath(msgName.sysType()) + "/" + stepMark + "/" + DateFormatUtils.format(new Date(), "yyyy-MM-dd") + "/";
-            resources = patternResolver.getResources(readPath);
-            System.err.println("日志地址 : " + logBasePath);
-            File file = new File(logBasePath);
-            if (!file.exists()) {
-                file.mkdirs();
-                System.err.println("日志路径不存在，创建目录");
-            }
-            for (Resource r : resources) {
-                Files.move(r.getFile().toPath(), Paths.get(logBasePath + r.getFilename()));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Async
     public void asyncMethod(MQMsg mQMsg, int resIndex) throws Exception {
 
         String exchangeName = msgName.exchangeName();
         if (resIndex > 0 && totalRes > 1 && !"".equals(msgName.hisExchangeName())) {
             exchangeName = msgName.hisExchangeName();
         }
-        System.err.println("消息数 ： " + mQMsg.getData().size());
-        System.err.println(JSON.toJSONString(mQMsg));
-        System.err.println("发送路由 ： " + exchangeName);
+        log.info("消息数 ： " + mQMsg.getData().size());
+        log.info("发送路由 ： " + exchangeName);
         iSenderService.send(exchangeName, JSON.toJSONString(mQMsg).getBytes());
     }
+    @Async
+    public void asynWriteFileMethod(Resource r) {
+
+        try {
+            String readPath = "file:" + batchConfig.getSystemPath(msgName.sysType()) + "/" + stepMark + "/" + msgName.filePath();
+            String logBasePath = batchConfig.getLogPath(msgName.sysType()) + "/" + stepMark + "/" + DateFormatUtils.format(new Date(), "yyyy-MM-dd") + "/";
+            log.info("日志地址 : " + logBasePath);
+            File file = new File(logBasePath);
+            if (!file.exists()) {
+                file.mkdirs();
+                log.info("日志路径不存在，创建目录");
+            }
+            Files.move(r.getFile().toPath(), Paths.get(logBasePath + r.getFilename()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

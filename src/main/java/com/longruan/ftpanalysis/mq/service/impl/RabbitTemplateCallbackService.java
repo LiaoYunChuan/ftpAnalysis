@@ -4,6 +4,8 @@ import com.longruan.ftpanalysis.mq.model.SendMsgCache;
 import com.longruan.ftpanalysis.mq.enums.EUploadFlag;
 import com.longruan.ftpanalysis.mq.service.IMqUploadService;
 import com.longruan.ftpanalysis.util.ApplicationContextUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -24,7 +26,7 @@ import org.springframework.stereotype.Service;
 public class RabbitTemplateCallbackService implements RabbitTemplate.ConfirmCallback, RabbitTemplate.ReturnCallback {
     @Autowired
     private MsgRedisService msgRedisService;
-
+    Logger log = LoggerFactory.getLogger(this.getClass());
     /**
      * 消息发送到 Broker 后触发回调，确认消息是否到达 Broker 服务器，也就是只确认是否正确到达 Exchange 中
      *
