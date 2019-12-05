@@ -7,7 +7,7 @@ import com.longruan.ftpanalysis.mq.consts.MQConstants;
 import com.longruan.ftpanalysis.mq.model.MsgHead;
 import org.apache.commons.lang3.RandomUtils;
 
-@MsgName(job = "实时数据", filePath = "*AQSS", sysType = BatchConstants.SystemType.hjjc, exchangeName = MQConstants.ExChanges.REALTIME_DATA)
+@MsgName(job = "实时数据", filePath = "*AQSS", hisExchangeName = MQConstants.ExChanges.SENSOR_RTDATA_HIS,sysType = BatchConstants.SystemType.hjjc, exchangeName = MQConstants.ExChanges.REALTIME_DATA)
 public class RealTimeData extends MsgHead {
 
     @FieldOrder(order = 5)
@@ -40,7 +40,7 @@ public class RealTimeData extends MsgHead {
     }
 
     public String getSensor_id() {
-        return sensor_id;
+        return super.getMine_id()+sensor_id;
     }
 
     public void setSensor_id(String sensor_id) {
