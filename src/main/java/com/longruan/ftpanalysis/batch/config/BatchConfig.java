@@ -11,7 +11,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import java.util.Map;
 
 @Configuration("batchConfig")
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:batchconfig.properties")
 public class BatchConfig {
 
 
