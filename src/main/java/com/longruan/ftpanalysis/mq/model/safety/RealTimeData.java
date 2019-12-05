@@ -6,10 +6,6 @@ import com.longruan.ftpanalysis.mq.consts.BatchConstants;
 import com.longruan.ftpanalysis.mq.consts.MQConstants;
 import com.longruan.ftpanalysis.mq.model.MsgHead;
 import org.apache.commons.lang3.RandomUtils;
-import org.apache.commons.lang3.time.DateFormatUtils;
-import org.apache.commons.lang3.time.DateUtils;
-
-import java.text.ParseException;
 
 @MsgName(job = "实时数据", filePath = "*AQSS", sysType = BatchConstants.SystemType.hjjc, exchangeName = MQConstants.ExChanges.REALTIME_DATA)
 public class RealTimeData extends MsgHead {
@@ -98,14 +94,14 @@ public class RealTimeData extends MsgHead {
     }
 
     public String getTime() {
-        try {
-            if(!hasFomatTime){
-                this.time = DateFormatUtils.format(DateUtils.parseDate(this.time, "yyyy-MM-dd HH:mm:ss"), "yyyy-MM-dd/HH:mm:ss");
-                this.hasFomatTime=true;
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            if(!hasFomatTime){
+//                this.time = DateFormatUtils.format(DateUtils.parseDate(this.time, "yyyy-MM-dd HH:mm:ss"), "yyyy-MM-dd/HH:mm:ss");
+//                this.hasFomatTime=true;
+//            }
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
         return time;
     }
 
@@ -129,9 +125,9 @@ public class RealTimeData extends MsgHead {
         this.arg2 = arg2;
     }
 
-    public Boolean hasFomatTime=false;
-
-    public Boolean hasFomatTime() {
-        return this.hasFomatTime;
-    }
+//    public Boolean hasFomatTime=false;
+//
+//    public Boolean hasFomatTime() {
+//        return this.hasFomatTime;
+//    }
 }

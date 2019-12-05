@@ -15,7 +15,7 @@ public class SwitchData extends MsgHead {
     @FieldOrder(order = 6)
     private String sensor_id; //传感器编码
     @FieldOrder(order = 7)
-    private String sensor_data_type; //传感器监测类型
+    private String sensor_type; //传感器监测类型
     @FieldOrder(order = 8)
     private String location; //监测地点
     @FieldOrder(order = 9)
@@ -43,12 +43,12 @@ public class SwitchData extends MsgHead {
         this.sensor_id = sensor_id;
     }
 
-    public String getSensor_data_type() {
-        return sensor_data_type;
+    public String getSensor_type() {
+        return sensor_type;
     }
 
-    public void setSensor_data_type(String sensor_data_type) {
-        this.sensor_data_type = sensor_data_type;
+    public void setSensor_type(String sensor_type) {
+        this.sensor_type = sensor_type;
     }
 
     public String getLocation() {

@@ -5,10 +5,7 @@ import com.longruan.ftpanalysis.batch.entity.MsgName;
 import com.longruan.ftpanalysis.mq.consts.BatchConstants;
 import com.longruan.ftpanalysis.mq.consts.MQConstants;
 import com.longruan.ftpanalysis.mq.model.MsgHead;
-import org.apache.commons.lang3.time.DateFormatUtils;
-import org.apache.commons.lang3.time.DateUtils;
 
-import java.text.ParseException;
 import java.util.Date;
 
 @MsgName(job = "报警数据", filePath = "*AQBJ", sysType = BatchConstants.SystemType.hjjc, exchangeName = MQConstants.ExChanges.SENSOR_WARNDATA)
@@ -117,11 +114,11 @@ public class AlarmData extends MsgHead {
     }
 
     public String getTime() {
-        try {
-            this.time = DateFormatUtils.format(DateUtils.parseDate(this.time,"yyyy-MM-dd HH:mm:ss"),"yyyy-MM-dd/HH:mm:ss");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            this.time = DateFormatUtils.format(DateUtils.parseDate(this.time,"yyyy-MM-dd HH:mm:ss"),"yyyy-MM-dd/HH:mm:ss");
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
         return time;
     }
 

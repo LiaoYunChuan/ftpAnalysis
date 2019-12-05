@@ -40,14 +40,14 @@ public class BatchApplicationTests {
 
     @Test
     public void testHjss() throws Exception {
-//        method(AlarmData.class);//正常2 添加唯一键
-//        method(AnalogData.class);//正常2  sensor添加唯一键
-//        method(CumulantData.class);//正常2
+        method(AlarmData.class);//正常2 添加唯一键
+        method(AnalogData.class);//正常2  sensor添加唯一键
+        method(CumulantData.class);//正常2
         method(MinuteData.class);//无数据
-//        method(RealTimeData.class);//正常2
-//        method(SensorRefence.class);//正常2  添加唯一键
-//        method(Station.class);//正常2
-//        method(SwitchData.class);//正常2
+        method(RealTimeData.class);//正常2
+        method(SensorRefence.class);//正常2  添加唯一键
+        method(Station.class);//正常2
+        method(SwitchData.class);//正常2
     }
 
     @Async

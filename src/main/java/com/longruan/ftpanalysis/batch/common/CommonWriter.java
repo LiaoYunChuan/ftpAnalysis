@@ -40,7 +40,7 @@ public class CommonWriter implements ItemWriter {
         if (msgName == null) throw new ClassNotFoundException();
 
         //转移到日志目录
-         asynWriteFileMethod();
+//         asynWriteFileMethod();
 
         //发送消息
         asyncMethod(items);
@@ -71,13 +71,21 @@ public class CommonWriter implements ItemWriter {
     }
 
     @Async
-    public void asyncMethod(List items) throws Exception {
+    public void asyncMethod(List<? extends MsgHead> items) throws Exception {
+
 
         MQMsg mQMsg = new MQMsg();
         MsgHead msgHead = new MsgHead();
         if (items.size() > 0) {
+            String mineidMapped = batchConfig.mineidMapped(items.get(0).getMine_id());
+            if(mineidMapped!=null){
+                items.stream().forEach(e->
+                    e.setMine_id(mineidMapped)
+                );
+            }
             BeanUtils.copyProperties(items.get(0), msgHead);
         }
+
         mQMsg.setHead(msgHead);
         mQMsg.setData(items);
         System.err.println("消息 ： " + items.size());

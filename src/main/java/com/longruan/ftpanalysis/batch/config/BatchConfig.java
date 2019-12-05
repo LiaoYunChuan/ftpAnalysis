@@ -1,7 +1,6 @@
 package com.longruan.ftpanalysis.batch.config;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.longruan.ftpanalysis.mq.consts.BatchConstants;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -15,8 +14,6 @@ import java.util.Map;
 @PropertySource("classpath:batchconfig.properties")
 public class BatchConfig {
 
-    @Value("${msg.company.orgcode.mapper}")
-    private String orgCodeMapper;
 
     @Value("${msg.file.hjjc.path}")
     private String aqjcPath;
@@ -30,11 +27,18 @@ public class BatchConfig {
     @Value("${msg.file.log.rydw.basepath}")
     private String logRydwPath;
 
-    private Map<String,JSONObject> orgCodeMapperMap;
+    @Value("${msg.mineid.mapper}")
+    private String mineids;
+
+    private Map<String,String> mineidMap;
 
     @Bean
-    public void setOrgCodeMapperMap() {
-        this.orgCodeMapperMap = JSON.parseObject(this.orgCodeMapper,Map.class);
+    public void setmineidMap() {
+        this.mineidMap = JSON.parseObject(this.mineids,Map.class);
+    }
+
+    public String mineidMapped(String id){
+        return this.mineidMap.get(id);
     }
 
     @Bean
@@ -54,13 +58,6 @@ public class BatchConfig {
 
     public String getLogRydwPath() {
         return logRydwPath;
-    }
-
-    public String getOrgCode(String key) {
-        return this.orgCodeMapperMap.containsKey(key) ? (String) this.orgCodeMapperMap.get(key).get("oc") : "";
-    }
-    public String getComCode(String key) {
-        return this.orgCodeMapperMap.containsKey(key) ? (String) this.orgCodeMapperMap.get(key).get("cc") : "";
     }
 
     public String getAqjcPath() {
@@ -90,6 +87,7 @@ public class BatchConfig {
         }
         throw new Exception("【" + type + "】 不属于 BatchConstants.SystemType");
     }
+
 }
 
 
