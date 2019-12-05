@@ -59,7 +59,7 @@ public class AnalogData extends MsgHead {
 
 
     public String getSensor_type() {
-        return sensor_type;
+        return  this.sensor_type;
     }
 
     public void setSensor_type(String sensor_type) {

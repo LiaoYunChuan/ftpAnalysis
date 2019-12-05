@@ -1,6 +1,9 @@
 package com.longruan.ftpanalysis.mq.model;
 
 import com.longruan.ftpanalysis.batch.entity.FieldOrder;
+import org.apache.commons.lang3.time.DateFormatUtils;
+
+import java.util.Date;
 
 /**
  * 消息头
@@ -21,6 +24,7 @@ public class MsgHead {
     String county;// 县
     @FieldOrder(order = 4)
     String mine_id;// 矿
+    String mineid;// 矿
     private String time;
 
     public String getProvince() {
@@ -54,13 +58,22 @@ public class MsgHead {
 
     public void setMine_id(String mine_id) {
         this.mine_id = mine_id;
+        this.mineid=mine_id;
     }
 
     public String getTime() {
-        return time;
+        return DateFormatUtils.format(new Date(), "yyyy-MM-dd/HH:mm:ss");
     }
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getMineid() {
+        return mineid;
+    }
+
+    public void setMineid(String mineid) {
+        this.mineid = mineid;
     }
 }

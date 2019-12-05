@@ -14,7 +14,7 @@ public final class MQConstants {
         String SENSORREF = "SENSOR_REF";
         String SENSORMC = "SENSOR_MC";
         String SENSORSWITCH = "SENSOR_KC";
-        String SENSOR_RTDATA_HIS = "SENSOR_RTDATA_HIS";
+        String SENSOR_RTDATA_HIS = "SENSOR_HIS_DATA";
         String SENSOR_WARNDATA = "SENSOR_WARN";
         String SENSOR_WARNDATA_HIS = "SENSOR_WARNDATA_HIS";
         String SENSOR_LJDATA = "SENSOR_ACUM";

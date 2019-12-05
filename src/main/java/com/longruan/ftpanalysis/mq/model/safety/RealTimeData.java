@@ -93,18 +93,13 @@ public class RealTimeData extends MsgHead {
         this.monitor_val = monitor_val;
     }
 
+
+    @Override
     public String getTime() {
-//        try {
-//            if(!hasFomatTime){
-//                this.time = DateFormatUtils.format(DateUtils.parseDate(this.time, "yyyy-MM-dd HH:mm:ss"), "yyyy-MM-dd/HH:mm:ss");
-//                this.hasFomatTime=true;
-//            }
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
         return time;
     }
 
+    @Override
     public void setTime(String time) {
         this.time = time;
     }

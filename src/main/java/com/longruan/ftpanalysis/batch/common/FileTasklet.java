@@ -33,6 +33,7 @@ import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 @Component
@@ -46,8 +47,7 @@ public class FileTasklet implements Tasklet {
     private final BatchConfig batchConfig;
     private final String stepMark;
     private MsgName msgName;
-    private int totalRes=0;
-    private int resIndex=0;
+    private int totalRes = 0;
 
     public FileTasklet(ISenderService iSenderService, BatchConfig batchConfig, String stepMark, Class clz) throws Exception {
         this.batchConfig = batchConfig;
@@ -61,24 +61,28 @@ public class FileTasklet implements Tasklet {
         System.err.println("读取文件路径: " + readPath);
         this.resources = patternResolver.getResources(readPath);//动态读取资源列表
         if (resources.length == 0) System.err.println("暂无【" + msgName.filePath() + "】文件");
-        totalRes=resources.length;
+        totalRes = resources.length;
     }
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
-        for (Resource r : resources) {
-            try {
-                processFile(r);
-                resIndex++;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        AtomicInteger resIndex = new AtomicInteger();
+        List<Resource> rs = Arrays.asList(resources);
+        rs.stream()
+                .sorted(Comparator.comparing(Resource::getFilename).reversed())
+                .forEach(r -> {
+                    try {
+                        processFile(r, resIndex.get());
+                        resIndex.getAndIncrement();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
         return RepeatStatus.FINISHED;
     }
 
     @Async
-    public void processFile(Resource r) throws Exception {
+    public void processFile(Resource r, int resIndex) throws Exception {
 
         PatternMatchingCompositeLineMapper lineMapper = new PatternMatchingCompositeLineMapper<>();
         FlatFileItemReader reader = new FlatFileItemReader();
@@ -106,19 +110,30 @@ public class FileTasklet implements Tasklet {
         reader.setLineMapper(lineMapper);
         reader.open(new ExecutionContext());
         List items = new ArrayList<>();
-        Object obj;
+
         MQMsg mQMsg = new MQMsg();
         MsgHead msgHead = new MsgHead();
         int i = 0;
-        while ((obj = reader.read()) != null) {
-            items.add(obj);
-            if (i == 0) {
-                BeanUtils.copyProperties(obj, msgHead);
-            }
-            String mineidMapped = batchConfig.mineidMapped(msgHead.getMine_id());
-            if (mineidMapped != null) {
-                Method m = BeanUtils.findMethod(MsgHead.class, "setMine_id", String.class);
-                if (m != null) m.invoke(obj, mineidMapped);
+        Object obj = reader.read();
+        boolean flag = true;
+        while (flag) {
+            try {
+                obj = reader.read();
+                if (obj == null) {
+                    flag = false;
+                } else {
+                    items.add(obj);
+                    if (i == 0) {
+                        BeanUtils.copyProperties(obj, msgHead);
+                    }
+                    String mineidMapped = batchConfig.mineidMapped(msgHead.getMine_id());
+                    if (mineidMapped != null) {
+                        Method m = BeanUtils.findMethod(MsgHead.class, "setMine_id", String.class);
+                        if (m != null) m.invoke(obj, mineidMapped);
+                    }
+                }
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
             }
             i++;
         }
@@ -130,7 +145,7 @@ public class FileTasklet implements Tasklet {
         //转移到日志目录
 //         asynWriteFileMethod();
 //        //发送消息
-        asyncMethod(mQMsg);
+        asyncMethod(mQMsg, resIndex);
     }
 
     public static String[] getSelfFieldStr(Class clz) {
@@ -171,11 +186,11 @@ public class FileTasklet implements Tasklet {
     }
 
     @Async
-    public void asyncMethod(MQMsg mQMsg) throws Exception {
+    public void asyncMethod(MQMsg mQMsg, int resIndex) throws Exception {
 
-        String exchangeName=msgName.exchangeName();
-        if(totalRes>1 && !"".equals(msgName.hisExchangeName())){
-            exchangeName=msgName.hisExchangeName();
+        String exchangeName = msgName.exchangeName();
+        if (resIndex > 0 && totalRes > 1 && !"".equals(msgName.hisExchangeName())) {
+            exchangeName = msgName.hisExchangeName();
         }
         System.err.println("消息数 ： " + mQMsg.getData().size());
         System.err.println(JSON.toJSONString(mQMsg));
