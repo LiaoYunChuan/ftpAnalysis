@@ -50,7 +50,7 @@ public class AnalogData extends MsgHead {
     }
 
     public String getSensor_id() {
-        return sensor_id;
+        return super.getMine_id()+sensor_id;
     }
 
     public void setSensor_id(String sensor_id) {
@@ -59,7 +59,7 @@ public class AnalogData extends MsgHead {
 
 
     public String getSensor_type() {
-        return sensor_type;
+        return  this.sensor_type;
     }
 
     public void setSensor_type(String sensor_type) {

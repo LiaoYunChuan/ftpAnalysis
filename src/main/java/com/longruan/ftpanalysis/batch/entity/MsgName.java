@@ -11,4 +11,5 @@ public @interface MsgName {
     String exchangeName();
     String filePath();
     String sysType();
+    String hisExchangeName() default "";
 }
