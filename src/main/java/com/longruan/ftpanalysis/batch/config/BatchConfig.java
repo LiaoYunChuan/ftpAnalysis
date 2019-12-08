@@ -5,13 +5,11 @@ import com.longruan.ftpanalysis.mq.consts.BatchConstants;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.Map;
 
 @Configuration("batchConfig")
-@PropertySource("classpath:batchconfig.properties")
 public class BatchConfig {
 
 

@@ -89,7 +89,7 @@ public class CommonSchedule {
         }
     }
 
-    @Scheduled(fixedRate = 300000)
+    @Scheduled(fixedRate = 10000)
     public void readCumulantData() {
         logger.info(new Date() + "   读取传感器累积量信息");
         try {

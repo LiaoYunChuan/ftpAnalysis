@@ -5,7 +5,6 @@ import com.longruan.ftpanalysis.batch.entity.MsgName;
 import com.longruan.ftpanalysis.mq.consts.BatchConstants;
 import com.longruan.ftpanalysis.mq.consts.MQConstants;
 import com.longruan.ftpanalysis.mq.model.MsgHead;
-import org.apache.commons.lang3.RandomUtils;
 
 @MsgName(job = "实时数据", filePath = "*AQSS", hisExchangeName = MQConstants.ExChanges.SENSOR_RTDATA_HIS,sysType = BatchConstants.SystemType.hjjc, exchangeName = MQConstants.ExChanges.REALTIME_DATA)
 public class RealTimeData extends MsgHead {
@@ -80,12 +79,12 @@ public class RealTimeData extends MsgHead {
     }
 
     public String getMonitor_val() {
-
-        if (this.sensor_type != null && this.sensor_type.startsWith("K")) {
-            this.monitor_val = String.valueOf(RandomUtils.nextInt(0, 1));
-        } else {
-            this.monitor_val = String.valueOf(RandomUtils.nextFloat(0, 100));
-        }
+//
+//        if (this.sensor_type != null && this.sensor_type.startsWith("K")) {
+//            this.monitor_val = String.valueOf(RandomUtils.nextInt(0, 1));
+//        } else {
+//            this.monitor_val = String.valueOf(RandomUtils.nextFloat(0, 100));
+//        }
         return monitor_val;
     }
 

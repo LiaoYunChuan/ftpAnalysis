@@ -74,6 +74,7 @@ public class SensorRefence extends MsgHead {
 
     @Override
     public void setTime(String time) {
+
         this.time = time;
     }
 
