@@ -50,7 +50,7 @@ public class AnalogData extends MsgHead {
     }
 
     public String getSensor_id() {
-        return super.getMine_id()+sensor_id;
+        return sensor_id;
     }
 
     public void setSensor_id(String sensor_id) {

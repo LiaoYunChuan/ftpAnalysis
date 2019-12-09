@@ -116,7 +116,7 @@ public class FileTasklet implements Tasklet {
         MQMsg mQMsg = new MQMsg();
         MsgHead msgHead = new MsgHead();
         int i = 0;
-        Object obj = reader.read();
+        Object obj ;
         boolean flag = true;
         while (flag) {
             try {
@@ -134,6 +134,9 @@ public class FileTasklet implements Tasklet {
                         Method m = BeanUtils.findMethod(MsgHead.class, "setMine_id", String.class);
                         if (m != null) m.invoke(obj, mineidMapped);
                     }
+                    Method setSensorId = BeanUtils.findMethod(MsgHead.class, "setSensor_id", String.class);
+                    Method getSensorId = BeanUtils.findMethod(MsgHead.class, "getSensor_id", String.class);
+                    if(setSensorId!=null)setSensorId.invoke(obj,msgHead.getMine_id()+getSensorId.invoke(obj));
                     i++;
                 }
             } catch (Exception e) {
