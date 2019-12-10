@@ -94,7 +94,7 @@ public class FileTasklet implements Tasklet {
         Map<String, FieldSetMapper> fieldSetMappers = new HashMap<>();
 
         log.info("读取方式  : ");
-        log.info("   dataClz : " + dataClz);
+        log.info(" dataClz : " + dataClz);
         {
             String[] dataField = getFieldStr(dataClz);
             String dataTokenizers = Arrays.stream(dataField).map(e -> "*").collect(Collectors.joining(";"));
@@ -134,13 +134,15 @@ public class FileTasklet implements Tasklet {
                         Method m = BeanUtils.findMethod(MsgHead.class, "setMine_id", String.class);
                         if (m != null) m.invoke(obj, mineidMapped);
                     }
-                    Method setSensorId = BeanUtils.findMethod(MsgHead.class, "setSensor_id", String.class);
-                    Method getSensorId = BeanUtils.findMethod(MsgHead.class, "getSensor_id", String.class);
+                    Method setSensorId = BeanUtils.findMethod(obj.getClass(), "setSensor_id", String.class);
+                    Method getSensorId = BeanUtils.findMethod(obj.getClass(), "getSensor_id");
+                    System.err.println(obj.getClass());
+                    System.err.println(getSensorId);
                     if(setSensorId!=null)setSensorId.invoke(obj,msgHead.getMine_id()+getSensorId.invoke(obj));
                     i++;
                 }
             } catch (Exception e) {
-                log.error(e.getMessage());
+                e.printStackTrace();
             }
         }
         reader.close();
@@ -178,7 +180,6 @@ public class FileTasklet implements Tasklet {
     public void asynWriteFileMethod(Resource r) {
 
         try {
-            String readPath = "file:" + batchConfig.getSystemPath(msgName.sysType()) + "/" + stepMark + "/" + msgName.filePath();
             String logBasePath = batchConfig.getLogPath(msgName.sysType()) + "/" + stepMark + "/" + DateFormatUtils.format(new Date(), "yyyy-MM-dd") + "/";
             log.info("日志地址 : " + logBasePath);
             File file = new File(logBasePath);
