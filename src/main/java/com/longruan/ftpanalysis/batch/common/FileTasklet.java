@@ -136,8 +136,6 @@ public class FileTasklet implements Tasklet {
                     }
                     Method setSensorId = BeanUtils.findMethod(obj.getClass(), "setSensor_id", String.class);
                     Method getSensorId = BeanUtils.findMethod(obj.getClass(), "getSensor_id");
-                    System.err.println(obj.getClass());
-                    System.err.println(getSensorId);
                     if(setSensorId!=null)setSensorId.invoke(obj,msgHead.getMine_id()+getSensorId.invoke(obj));
                     i++;
                 }
@@ -151,7 +149,7 @@ public class FileTasklet implements Tasklet {
         //发送消息
         asyncMethod(mQMsg, resIndex);
         //转移到日志目录
-        asynWriteFileMethod(r);
+//        asynWriteFileMethod(r);
     }
 
     public static String[] getSelfFieldStr(Class clz) {
