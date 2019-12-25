@@ -27,6 +27,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -40,6 +41,7 @@ import java.util.stream.Collectors;
 
 @Component
 @StepScope
+@EnableAsync
 public class FileTasklet implements Tasklet {
 
     Logger log = LoggerFactory.getLogger(this.getClass());
@@ -146,10 +148,12 @@ public class FileTasklet implements Tasklet {
         reader.close();
         mQMsg.setHead(msgHead);
         mQMsg.setData(items);
-        //发送消息
-        asyncMethod(mQMsg, resIndex);
+        log.info("消息数 ： " + mQMsg.getData().size());
+
         //转移到日志目录
 //        asynWriteFileMethod(r);
+        //发送消息
+//        asyncMethod(mQMsg, resIndex);
     }
 
     public static String[] getSelfFieldStr(Class clz) {
@@ -164,6 +168,7 @@ public class FileTasklet implements Tasklet {
                 .map(Field::getName).toArray(String[]::new);
     }
 
+    @Async
     public void asyncMethod(MQMsg mQMsg, int resIndex) throws Exception {
 
         String exchangeName = msgName.exchangeName();

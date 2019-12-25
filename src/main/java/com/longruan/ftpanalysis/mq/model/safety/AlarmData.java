@@ -114,11 +114,6 @@ public class AlarmData extends MsgHead {
     }
 
     public String getTime() {
-//        try {
-//            this.time = DateFormatUtils.format(DateUtils.parseDate(this.time,"yyyy-MM-dd HH:mm:ss"),"yyyy-MM-dd/HH:mm:ss");
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
         return time;
     }
 

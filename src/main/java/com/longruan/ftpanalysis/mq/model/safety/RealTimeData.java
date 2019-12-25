@@ -79,12 +79,6 @@ public class RealTimeData extends MsgHead {
     }
 
     public String getMonitor_val() {
-//
-//        if (this.sensor_type != null && this.sensor_type.startsWith("K")) {
-//            this.monitor_val = String.valueOf(RandomUtils.nextInt(0, 1));
-//        } else {
-//            this.monitor_val = String.valueOf(RandomUtils.nextFloat(0, 100));
-//        }
         return monitor_val;
     }
 
