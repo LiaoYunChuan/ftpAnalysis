@@ -29,17 +29,17 @@ public class PersonRtData extends MsgHead {
     @FieldOrder(order = 12)
     private String current_location;//当前位置
     @FieldOrder(order = 13)
-    @JsonFormat(pattern = "yyyy-MM-dd/HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
     private Timestamp current_time;//当前位置时间
     @FieldOrder(order = 14)
     private String in_well_location;//下井位置
     @FieldOrder(order = 15)
-    @JsonFormat(pattern = "yyyy-MM-dd/HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
     private Timestamp in_well_time;//下井时间
     @FieldOrder(order = 16)
     private String source_location;//来源位置
     @FieldOrder(order = 17)
-    @JsonFormat(pattern = "yyyy-MM-dd/HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
     private Timestamp source_time;//来源时间
     @FieldOrder(order = 18)
     private String bc_name;//班次名称

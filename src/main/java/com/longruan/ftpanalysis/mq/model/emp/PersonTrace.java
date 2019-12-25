@@ -31,7 +31,7 @@ public class PersonTrace extends MsgHead {
     @FieldOrder(order = 13)
     private String current_dev_location;//所在位置设备地址
     @FieldOrder(order = 14)
-    @JsonFormat(pattern = "yyyy-MM-dd/HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
     private Timestamp collect_time;//采集时间
     @FieldOrder(order = 15)
     private Float distance;//距离， 精确人员定位使用

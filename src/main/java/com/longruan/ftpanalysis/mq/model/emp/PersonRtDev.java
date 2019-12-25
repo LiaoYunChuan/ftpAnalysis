@@ -19,7 +19,7 @@ public class PersonRtDev extends MsgHead {
     @FieldOrder(order = 7)
     private String dev_type_name;//设备类型名称
     @FieldOrder(order = 8)
-    @JsonFormat(pattern = "yyyy-MM-dd/HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
     private Timestamp collect_time;//采集时间
     @FieldOrder(order = 9)
     private String dev_type;//设备类型（0:人员分站，8：人员识别器，9：人员区域）
