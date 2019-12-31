@@ -46,7 +46,9 @@ public class CommonFileReader {
             for (String line : lines) {
                 try {
                     Object data = dataMapper.mapLine(line, 0);
-                    if(i==0)BeanUtils.copyProperties(data, msgHead);
+                    if(i==0){
+                        BeanUtils.copyProperties(data, msgHead);
+                    }
 
                     String mineidMapped = batchConfig.mineidMapped(msgHead.getMine_id());
                     if (mineidMapped != null) {
@@ -61,6 +63,7 @@ public class CommonFileReader {
                 }
                 i++;
             }
+            mQMsg.setHead(msgHead);
             mQMsg.setData(items);
         }
         return mQMsg;

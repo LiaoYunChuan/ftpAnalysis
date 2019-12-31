@@ -55,7 +55,6 @@ public class FileTasklet implements Tasklet {
         PathMatchingResourcePatternResolver patternResolver = new PathMatchingResourcePatternResolver();
         String readPath = "file:" + batchConfig.getSystemPath(msgName.sysType()) + "/" + stepMark + "/" + msgName.filePath();
         this.resources = patternResolver.getResources(readPath);//动态读取资源列表
-
         totalRes = resources.length;
     }
 
