@@ -4,9 +4,9 @@ import com.longruan.ftpanalysis.batch.config.BatchConfig;
 import com.longruan.ftpanalysis.batch.entity.MsgName;
 import com.longruan.ftpanalysis.batch.listener.CommonJobListener;
 import com.longruan.ftpanalysis.batch.util.BatchUtil;
-import com.longruan.ftpanalysis.mq.send.ISenderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -26,7 +26,7 @@ public class CommonJobConfig {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    ISenderService iSenderService;
+    private RabbitTemplate iSenderService;
 
     @Autowired
     BatchConfig batchConfig;
