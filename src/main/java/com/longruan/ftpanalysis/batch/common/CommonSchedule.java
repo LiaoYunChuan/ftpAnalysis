@@ -38,7 +38,7 @@ public class CommonSchedule {
         jobLauncher.run(commonJobConfig.commonJob(jobClass), jobParameters2);
     }
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 100000)
     public void readAnalogData() {
         logger.info(new Date() + "   读取模拟量测点信息");
         try {
@@ -48,7 +48,7 @@ public class CommonSchedule {
         }
     }
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 100000)
     public void readSwitchData() {
         logger.info(new Date() + "   读取开关量测点信息");
         try {
@@ -79,7 +79,7 @@ public class CommonSchedule {
     }
 
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 100000)
     public void readSensorRefence() {
         logger.info(new Date() + "   读取传感器关系信息");
         try {
@@ -89,7 +89,7 @@ public class CommonSchedule {
         }
     }
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 50000)
     public void readCumulantData() {
         logger.info(new Date() + "   读取传感器累积量信息");
         try {
@@ -99,7 +99,7 @@ public class CommonSchedule {
         }
     }
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 50000)
     public void readStation() {
         logger.info(new Date() + "   读取分站信息");
         try {
@@ -110,7 +110,7 @@ public class CommonSchedule {
     }
 
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 60000)
     public void readMinuteData() {
         logger.info(new Date() + "   读取传感器分钟数据信息");
         try {
