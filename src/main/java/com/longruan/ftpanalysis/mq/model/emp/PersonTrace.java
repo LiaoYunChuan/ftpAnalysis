@@ -19,9 +19,9 @@ public class PersonTrace extends MsgHead {
     @FieldOrder(order = 7)
     private String department;//部门
     @FieldOrder(order = 8)
-    private String duty;//工种或者职务
+    private String duty;//职务
     @FieldOrder(order = 9)
-    private String work_type;//工种或者职务
+    private String work_type;//工种
     @FieldOrder(order = 10)
     private String card_id;//卡号
     @FieldOrder(order = 11)
