@@ -6,7 +6,7 @@ import com.longruan.ftpanalysis.mq.consts.BatchConstants;
 import com.longruan.ftpanalysis.mq.consts.MQConstants;
 import com.longruan.ftpanalysis.mq.model.AutoMsgHead;
 
-@MsgName(job = "自动化传感器参数", filePath = "*dev", sysType = BatchConstants.SystemType.zdh, exchangeName = MQConstants.ExChanges.AUTO_DEV)
+@MsgName(job = "自动化传感器参数", filePath = "*dev*", sysType = BatchConstants.SystemType.zdh, exchangeName = MQConstants.ExChanges.AUTO_DEV)
 public class AutoSensor extends AutoMsgHead {
 
     @FieldOrder(order = 5)
@@ -23,6 +23,10 @@ public class AutoSensor extends AutoMsgHead {
     private String measure_min; //量程下限
     @FieldOrder(order = 11)
     private String measure_max; //量程上限
+    @FieldOrder(order = 12)
+    private String remark1;
+    @FieldOrder(order = 13)
+    private String remark2;
 
     public String getSensor_id() {
         return sensor_id;
@@ -78,5 +82,21 @@ public class AutoSensor extends AutoMsgHead {
 
     public void setMeasure_max(String measure_max) {
         this.measure_max = measure_max;
+    }
+
+    public String getRemark1() {
+        return remark1;
+    }
+
+    public void setRemark1(String remark1) {
+        this.remark1 = remark1;
+    }
+
+    public String getRemark2() {
+        return remark2;
+    }
+
+    public void setRemark2(String remark2) {
+        this.remark2 = remark2;
     }
 }

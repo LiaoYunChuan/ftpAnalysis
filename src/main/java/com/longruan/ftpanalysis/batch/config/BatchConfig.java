@@ -19,11 +19,17 @@ public class BatchConfig {
     @Value("${msg.file.rydw.path}")
     private String rydwPath;
 
+    @Value("${msg.file.zdh.path}")
+    private String zdhPath;
+
     @Value("${msg.file.log.hjjc.basepath}")
     private String logHjjcPath;
 
     @Value("${msg.file.log.rydw.basepath}")
     private String logRydwPath;
+
+    @Value("${msg.file.log.zdh.basepath}")
+    private String logZdhPath;
 
     @Value("${msg.mineid.mapper}")
     private String mineids;
@@ -58,6 +64,10 @@ public class BatchConfig {
         return logRydwPath;
     }
 
+    public String getLogZdhPath() {
+        return logZdhPath;
+    }
+
     public String getAqjcPath() {
         return aqjcPath;
     }
@@ -66,12 +76,18 @@ public class BatchConfig {
         return rydwPath;
     }
 
+    public String getZdhPath() {
+        return zdhPath;
+    }
+
     public String getSystemPath(String type) throws Exception {
         switch (type) {
             case BatchConstants.SystemType.hjjc:
                 return getAqjcPath();
             case BatchConstants.SystemType.rydw:
                 return getRydwPath();
+            case BatchConstants.SystemType.zdh:
+                return getZdhPath();
         }
         throw new Exception("【" + type + "】 不属于 BatchConstants.SystemType");
     }
@@ -82,6 +98,8 @@ public class BatchConfig {
                 return getLogHjjcPath();
             case BatchConstants.SystemType.rydw:
                 return getLogRydwPath();
+            case BatchConstants.SystemType.zdh:
+                return getLogZdhPath();
         }
         throw new Exception("【" + type + "】 不属于 BatchConstants.SystemType");
     }

@@ -60,6 +60,7 @@ public class CommonFileReader {
                     if (setSensorId != null) setSensorId.invoke(data, msgHead.getMine_id() + getSensorId.invoke(data));
                     items.add(data);
                 } catch (Exception e) {
+                    e.printStackTrace();
                 }
                 i++;
             }
