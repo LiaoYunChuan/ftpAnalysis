@@ -1,10 +1,15 @@
 package com.longruan.ftpanalysis.mq.model.auto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.longruan.ftpanalysis.batch.entity.FieldOrder;
 import com.longruan.ftpanalysis.batch.entity.MsgName;
 import com.longruan.ftpanalysis.mq.consts.BatchConstants;
 import com.longruan.ftpanalysis.mq.consts.MQConstants;
 import com.longruan.ftpanalysis.mq.model.AutoMsgHead;
+
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 @MsgName(job = "自动化传感器参数", filePath = "*dev*", sysType = BatchConstants.SystemType.zdh, exchangeName = MQConstants.ExChanges.AUTO_DEV)
 public class AutoSensor extends AutoMsgHead {
@@ -14,9 +19,9 @@ public class AutoSensor extends AutoMsgHead {
     @FieldOrder(order = 6)
     private String sensor_name;//监测地点
     @FieldOrder(order = 7)
-    private String sensor_type;//传感器名称
+    private String sensor_type;//传感器类型
     @FieldOrder(order = 8)
-    private String sensor_data_type;//传感器监测类型
+    private String point_type;//传感器监测类型
     @FieldOrder(order = 9)
     private String unit;
     @FieldOrder(order = 10)
@@ -24,9 +29,11 @@ public class AutoSensor extends AutoMsgHead {
     @FieldOrder(order = 11)
     private String measure_max; //量程上限
     @FieldOrder(order = 12)
-    private String remark1;
+    @JsonFormat(pattern = "yyyy-MM-dd/HH:mm:ss", timezone = "GMT+8")
+    private String time_str;
+    private Timestamp time;
     @FieldOrder(order = 13)
-    private String remark2;
+    private String remark;
 
     public String getSensor_id() {
         return sensor_id;
@@ -52,12 +59,12 @@ public class AutoSensor extends AutoMsgHead {
         this.sensor_type = sensor_type;
     }
 
-    public String getSensor_data_type() {
-        return sensor_data_type;
+    public String getPoint_type() {
+        return point_type;
     }
 
-    public void setSensor_data_type(String sensor_data_type) {
-        this.sensor_data_type = sensor_data_type;
+    public void setPoint_type(String point_type) {
+        this.point_type = point_type;
     }
 
     public String getUnit() {
@@ -84,19 +91,31 @@ public class AutoSensor extends AutoMsgHead {
         this.measure_max = measure_max;
     }
 
-    public String getRemark1() {
-        return remark1;
+    public String getTime_str() {
+        return time_str;
     }
 
-    public void setRemark1(String remark1) {
-        this.remark1 = remark1;
+    public void setTime_str(String time_str) throws ParseException {
+        SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd/HH:mm:ss");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.time_str = time_str;
+        this.time=Timestamp.valueOf(sdf2.format(sdf1.parse(time_str)));
+
     }
 
-    public String getRemark2() {
-        return remark2;
+    public Timestamp getTime() {
+        return time;
     }
 
-    public void setRemark2(String remark2) {
-        this.remark2 = remark2;
+    public void setTime(Timestamp time) {
+        this.time = time;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }
