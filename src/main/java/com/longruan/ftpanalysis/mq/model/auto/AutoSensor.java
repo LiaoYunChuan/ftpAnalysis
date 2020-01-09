@@ -11,6 +11,9 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+/**
+ * 抽采泵
+ */
 @MsgName(job = "自动化传感器参数", filePath = "*dev*", sysType = BatchConstants.SystemType.zdh, exchangeName = MQConstants.ExChanges.AUTO_DEV)
 public class AutoSensor extends AutoMsgHead {
 
@@ -34,6 +37,7 @@ public class AutoSensor extends AutoMsgHead {
     private Timestamp time;
     @FieldOrder(order = 13)
     private String remark;
+    private String point_cat="0";
 
     public String getSensor_id() {
         return sensor_id;
@@ -117,5 +121,16 @@ public class AutoSensor extends AutoMsgHead {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getPoint_cat() {
+        return point_cat;
+    }
+
+    public void setPoint_cat(String point_cat) {
+        if(null==point_cat){
+            point_cat="0";
+        }
+        this.point_cat = point_cat;
     }
 }

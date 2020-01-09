@@ -99,7 +99,7 @@ public class FileTasklet implements Tasklet {
             buffer.clear();
             int length = channel.read(buffer);
             String result = new String(buffer.array(), 0, length, "utf-8");
-            asynWriteFileMethod(r);//日志文件
+//            asynWriteFileMethod(r);//日志文件
             asyncRabbitmqMethod(result, resIndex);
         } finally {
             if (channel != null) {

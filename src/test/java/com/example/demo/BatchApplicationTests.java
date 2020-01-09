@@ -3,7 +3,13 @@ package com.example.demo;
 import com.longruan.ftpanalysis.FmftpApplication;
 import com.longruan.ftpanalysis.batch.common.CommonJobConfig;
 import com.longruan.ftpanalysis.batch.entity.MsgName;
+import com.longruan.ftpanalysis.mq.model.auto.AutoRtData;
+import com.longruan.ftpanalysis.mq.model.auto.AutoSensor;
 import com.longruan.ftpanalysis.mq.model.emp.PersonRtData;
+import com.longruan.ftpanalysis.mq.model.emp.PersonTrace;
+import com.longruan.ftpanalysis.mq.model.emp_new.PersonRealDevSync;
+import com.longruan.ftpanalysis.mq.model.emp_new.PersonRealSync;
+import com.longruan.ftpanalysis.mq.model.emp_new.PersonTraceSync;
 import com.longruan.ftpanalysis.mq.model.safety.AlarmData;
 import com.longruan.ftpanalysis.mq.model.safety.RealTimeData;
 import org.junit.Test;
@@ -46,11 +52,15 @@ public class BatchApplicationTests {
 //        method(AnalogData.class);//正常2  sensor添加唯一键
 //        method(CumulantData.class);//正常2
 //        method(MinuteData.class);//无数据
-        method(RealTimeData.class);//正常2
+//        method(AutoRtData.class);//正常2
+//        method(AutoSensor.class);//正常2
 //        method(SensorRefence.class);//正常2  添加唯一键
 //        method(Station.class);//正常2
 //        method(SwitchData.class);//正常2
-//        method(PersonRtData.class);//正常2
+//        method(PersonRtData.class);//正常
+//        method(PersonRealSync.class);
+//        method(PersonRealDevSync.class);
+        method(PersonTraceSync.class);
     }
 
     @Async
