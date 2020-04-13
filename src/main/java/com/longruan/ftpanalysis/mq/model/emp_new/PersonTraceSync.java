@@ -1,4 +1,4 @@
-package com.longruan.ftpanalysis.mq.model.emp;
+package com.longruan.ftpanalysis.mq.model.emp_new;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.longruan.ftpanalysis.batch.entity.FieldOrder;
@@ -11,13 +11,13 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-@MsgName(job = "人员轨迹", filePath = "*PersonTraceSync", sysType = BatchConstants.SystemType.rydw, exchangeName = MQConstants.ExChanges.EMP_TRACE)
-public class PersonTrace extends MsgHead {
+@MsgName(job = "人员轨迹数据", filePath = "*PersonTraceSync*", sysType = BatchConstants.SystemType.rydw, exchangeName = MQConstants.ExChanges.EMP_SYNC_TRACE)
+public class PersonTraceSync extends MsgHead {
 
     @FieldOrder(order = 5)
     private String person_id;//人员唯一编码
     @FieldOrder(order = 6)
-    private String person_name;//人员姓名
+    private String name;//人员姓名
     @FieldOrder(order = 7)
     private String department;//部门
     @FieldOrder(order = 8)
@@ -49,12 +49,12 @@ public class PersonTrace extends MsgHead {
         this.person_id = person_id;
     }
 
-    public String getPerson_name() {
-        return person_name;
+    public String getName() {
+        return name;
     }
 
-    public void setPerson_name(String person_name) {
-        this.person_name = person_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDepartment() {

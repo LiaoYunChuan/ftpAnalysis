@@ -1,4 +1,4 @@
-package com.longruan.ftpanalysis.mq.model.emp;
+package com.longruan.ftpanalysis.mq.model.emp_new;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.longruan.ftpanalysis.batch.entity.FieldOrder;
@@ -11,13 +11,13 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-@MsgName(job = "人员实时数据", filePath = "*PersonRealSync*", sysType = BatchConstants.SystemType.rydw, exchangeName = MQConstants.ExChanges.EMP_RYSS)
-public class PersonRtData extends MsgHead {
+@MsgName(job = "人员实时数据", filePath = "*PersonRealSync*", sysType = BatchConstants.SystemType.rydw, exchangeName = MQConstants.ExChanges.EMP_SYNC_RTDATA)
+public class PersonRealSync extends MsgHead {
 
     @FieldOrder(order = 5)
     private String person_id;//人员卡编码
     @FieldOrder(order = 6)
-    private String person_name;//人员姓名
+    private String name;//人员姓名
     @FieldOrder(order = 7)
     private String department;//部门
     @FieldOrder(order = 8)
@@ -29,17 +29,17 @@ public class PersonRtData extends MsgHead {
     @FieldOrder(order = 11)
     private String job_num;//工号
     @FieldOrder(order = 12)
-    private String station_id;//当前位置
+    private String current_location;//当前位置
     @FieldOrder(order = 13)
     @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
-    private String snap_time_str;//当前位置时间
-    private Timestamp snap_time;
+    private String current_time_str;//当前位置时间
+    private Timestamp current_time_;
     @FieldOrder(order = 14)
     private String in_well_location;//下井位置
     @FieldOrder(order = 15)
     @JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
-    private String well_in_str;//下井时间
-    private Timestamp well_in;
+    private String in_well_time_str;//下井时间
+    private Timestamp in_well_time;
     @FieldOrder(order = 16)
     private String source_location;//来源位置
     @FieldOrder(order = 17)
@@ -59,12 +59,12 @@ public class PersonRtData extends MsgHead {
         this.person_id = person_id;
     }
 
-    public String getPerson_name() {
-        return person_name;
+    public String getName() {
+        return name;
     }
 
-    public void setPerson_name(String person_name) {
-        this.person_name = person_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDepartment() {
@@ -107,31 +107,31 @@ public class PersonRtData extends MsgHead {
         this.job_num = job_num;
     }
 
-    public String getStation_id() {
-        return station_id;
+    public String getCurrent_location() {
+        return current_location;
     }
 
-    public void setStation_id(String station_id) {
-        this.station_id = station_id;
+    public void setCurrent_location(String current_location) {
+        this.current_location = current_location;
     }
 
-    public String getSnap_time_str() {
-        return snap_time_str;
+    public String getCurrent_time_str() {
+        return current_time_str;
     }
 
-    public void setSnap_time_str(String snap_time_str) throws ParseException {
+    public void setCurrent_time_str(String current_time_str) throws ParseException {
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        this.snap_time_str = snap_time_str;
-        this.snap_time=Timestamp.valueOf(sdf2.format(sdf1.parse(snap_time_str)));
+        this.current_time_str = current_time_str;
+        this.current_time_=Timestamp.valueOf(sdf2.format(sdf1.parse(current_time_str)));
     }
 
-    public Timestamp getSnap_time() {
-        return snap_time;
+    public Timestamp getCurrent_time_() {
+        return current_time_;
     }
 
-    public void setSnap_time(Timestamp snap_time) {
-        this.snap_time = snap_time;
+    public void setCurrent_time_(Timestamp current_time_) {
+        this.current_time_ = current_time_;
     }
 
     public String getIn_well_location() {
@@ -142,23 +142,23 @@ public class PersonRtData extends MsgHead {
         this.in_well_location = in_well_location;
     }
 
-    public String getWell_in_str() {
-        return well_in_str;
+    public String getIn_well_time_str() {
+        return in_well_time_str;
     }
 
-    public void setWell_in_str(String well_in_str) throws ParseException {
+    public void setIn_well_time_str(String in_well_time_str) throws ParseException {
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        this.well_in_str = well_in_str;
-        this.well_in=Timestamp.valueOf(sdf2.format(sdf1.parse(well_in_str)));
+        this.in_well_time_str = in_well_time_str;
+        this.in_well_time=Timestamp.valueOf(sdf2.format(sdf1.parse(in_well_time_str)));
     }
 
-    public Timestamp getWell_in() {
-        return well_in;
+    public Timestamp getIn_well_time() {
+        return in_well_time;
     }
 
-    public void setWell_in(Timestamp well_in) {
-        this.well_in = well_in;
+    public void setIn_well_time(Timestamp in_well_time) {
+        this.in_well_time = in_well_time;
     }
 
     public String getSource_location() {
@@ -203,5 +203,4 @@ public class PersonRtData extends MsgHead {
     public void setRemark(String remark) {
         this.remark = remark;
     }
-
 }

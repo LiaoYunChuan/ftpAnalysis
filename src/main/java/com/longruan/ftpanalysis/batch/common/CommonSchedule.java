@@ -4,6 +4,9 @@
 //import com.longruan.ftpanalysis.batch.entity.MsgName;
 //import com.longruan.ftpanalysis.mq.model.auto.AutoRtData;
 //import com.longruan.ftpanalysis.mq.model.auto.AutoSensor;
+//import com.longruan.ftpanalysis.mq.model.emp_new.PersonRealDevSync;
+//import com.longruan.ftpanalysis.mq.model.emp_new.PersonRealSync;
+//import com.longruan.ftpanalysis.mq.model.emp_new.PersonTraceSync;
 //import com.longruan.ftpanalysis.mq.model.safety.*;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -137,6 +140,36 @@
 //        logger.info(new Date() + "   读取自动化实时数据");
 //        try {
 //            method(AutoRtData.class);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    @Scheduled(fixedRate = 5000)
+//    public void readPersonRealSync() {
+//        logger.info(new Date() + "   读取人员实时数据");
+//        try {
+//            method(PersonRealSync.class);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    @Scheduled(fixedRate = 300000)
+//    public void readPersonRealDevSync() {
+//        logger.info(new Date() + "   读取人员设备数据");
+//        try {
+//            method(PersonRealDevSync.class);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    @Scheduled(fixedRate = 5000)
+//    public void readPersonTraceSync() {
+//        logger.info(new Date() + "   读取人员轨迹数据");
+//        try {
+//            method(PersonTraceSync.class);
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }

@@ -34,6 +34,10 @@ public final class MQConstants {
         String EMP_DEV="EMP_DEV";//系统异常
         String EMP_TRACE="EMP_TRACE";//系统异常
 
+        String EMP_SYNC_RTDATA="EMP_SYNC_RTDATA";
+        String EMP_SYNC_DEV="EMP_SYNC_DEV";
+        String EMP_SYNC_TRACE="EMP_SYNC_TRACE";
+
         String AUTO_RTDATA="AUTO_RTDATA";//自动化实时数据
         String AUTO_DEV="AUTO_DEV";//自动化传感器
 
@@ -88,6 +92,10 @@ public final class MQConstants {
         String EMP_SYS_EX=EX_PREFIX+QueueName.EMP_SYS_EX;//系统异常
         String EMP_DEV=EX_PREFIX+QueueName.EMP_DEV;//系统异常
         String EMP_TRACE=EX_PREFIX+QueueName.EMP_TRACE;//系统异常
+
+        String EMP_SYNC_RTDATA=EX_PREFIX+QueueName.EMP_SYNC_RTDATA;
+        String EMP_SYNC_DEV=EX_PREFIX+QueueName.EMP_SYNC_DEV;
+        String EMP_SYNC_TRACE=EX_PREFIX+QueueName.EMP_SYNC_TRACE;
 
         String AUTO_RTDATA=EX_PREFIX+QueueName.AUTO_RTDATA;//自动化实时数据
         String AUTO_DEV=EX_PREFIX+QueueName.AUTO_DEV;//自动化传感器
