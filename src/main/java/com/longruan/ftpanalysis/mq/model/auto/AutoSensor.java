@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-@MsgName(job = "自动化传感器参数", filePath = "*dev*", sysType = BatchConstants.SystemType.zdh, exchangeName = MQConstants.ExChanges.AUTO_DEV)
+@MsgName(job = "自动化抽采泵传感器参数", filePath = "*dev*", sysType = BatchConstants.SystemType.zdh, exchangeName = MQConstants.ExChanges.AUTO_DEV)
 public class AutoSensor extends AutoMsgHead {
 
     @FieldOrder(order = 5)
@@ -34,6 +34,7 @@ public class AutoSensor extends AutoMsgHead {
     private Timestamp time;
     @FieldOrder(order = 13)
     private String remark;
+    private String point_cat = "0";
 
     public String getSensor_id() {
         return sensor_id;
@@ -99,7 +100,7 @@ public class AutoSensor extends AutoMsgHead {
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd/HH:mm:ss");
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.time_str = time_str;
-        this.time=Timestamp.valueOf(sdf2.format(sdf1.parse(time_str)));
+        this.time = Timestamp.valueOf(sdf2.format(sdf1.parse(time_str)));
 
     }
 
@@ -117,5 +118,13 @@ public class AutoSensor extends AutoMsgHead {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getPoint_cat() {
+        return point_cat;
+    }
+
+    public void setPoint_cat(String point_cat) {
+        this.point_cat = point_cat;
     }
 }

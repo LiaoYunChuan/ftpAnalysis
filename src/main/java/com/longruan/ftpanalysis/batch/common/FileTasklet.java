@@ -99,7 +99,7 @@ public class FileTasklet implements Tasklet {
             buffer.clear();
             int length = channel.read(buffer);
             String result = new String(buffer.array(), 0, length, "utf-8");
-            asynWriteFileMethod(r);//日志文件
+//            asynWriteFileMethod(r);//日志文件
             asyncRabbitmqMethod(result, resIndex);
         } finally {
             if (channel != null) {
@@ -116,7 +116,8 @@ public class FileTasklet implements Tasklet {
             exchangeName = msgName.hisExchangeName();
         }
         log.info("消息数 ： " + mqmsg.getData().size());
-        iSenderService.convertAndSend(exchangeName, "",JSON.toJSONString(mqmsg).getBytes());//发送消息到rabbitmq
+        System.err.println(JSON.toJSONString(mqmsg).getBytes());
+//        iSenderService.convertAndSend(exchangeName, "",JSON.toJSONString(mqmsg).getBytes());//发送消息到rabbitmq
     }
 
     @Async
