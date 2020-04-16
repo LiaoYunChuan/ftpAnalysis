@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-@MsgName(job = "人员轨迹", filePath = "*PersonTraceSync", sysType = BatchConstants.SystemType.rydw, exchangeName = MQConstants.ExChanges.EMP_TRACE)
+@MsgName(job = "人员轨迹", filePath = "*PersonTraceSync", sysType = BatchConstants.SystemType.rydw, exchangeName = MQConstants.ExChanges.EMP_SYNC_TRACE)
 public class PersonTrace extends MsgHead {
 
     @FieldOrder(order = 5)
@@ -121,7 +121,7 @@ public class PersonTrace extends MsgHead {
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.collect_time_str = collect_time_str;
-        this.collect_time=Timestamp.valueOf(sdf2.format(sdf1.parse(collect_time_str)));
+        this.collect_time = Timestamp.valueOf(sdf2.format(sdf1.parse(collect_time_str)));
     }
 
     public Timestamp getCollect_time() {

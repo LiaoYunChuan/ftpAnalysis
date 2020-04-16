@@ -31,8 +31,8 @@ public final class MQConstants {
         String EMP_OVER_PERSON="EMP_OVER_PERSON";//人员超员
         String EMP_SPECIAL_EX="EMP_SPECIAL_EX";//特种人员作业异常
         String EMP_SYS_EX="EMP_SYS_EX";//系统异常
-        String EMP_DEV="EMP_DEV";//系统异常
-        String EMP_TRACE="EMP_TRACE";//系统异常
+        String EMP_DEV="EMP_DEV";//
+        String EMP_TRACE="EMP_TRACE";//
 
         String EMP_SYNC_RTDATA="EMP_SYNC_RTDATA";
         String EMP_SYNC_DEV="EMP_SYNC_DEV";
@@ -90,8 +90,8 @@ public final class MQConstants {
         String EMP_OVER_PERSON=EX_PREFIX+QueueName.EMP_OVER_PERSON;//人员超员
         String EMP_SPECIAL_EX=EX_PREFIX+QueueName.EMP_SPECIAL_EX;//特种人员作业异常
         String EMP_SYS_EX=EX_PREFIX+QueueName.EMP_SYS_EX;//系统异常
-        String EMP_DEV=EX_PREFIX+QueueName.EMP_DEV;//系统异常
-        String EMP_TRACE=EX_PREFIX+QueueName.EMP_TRACE;//系统异常
+        String EMP_DEV=EX_PREFIX+QueueName.EMP_DEV;
+        String EMP_TRACE=EX_PREFIX+QueueName.EMP_TRACE;
 
         String EMP_SYNC_RTDATA=EX_PREFIX+QueueName.EMP_SYNC_RTDATA;
         String EMP_SYNC_DEV=EX_PREFIX+QueueName.EMP_SYNC_DEV;

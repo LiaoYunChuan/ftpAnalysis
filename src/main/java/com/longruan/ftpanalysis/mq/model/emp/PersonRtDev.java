@@ -9,7 +9,7 @@ import com.longruan.ftpanalysis.mq.model.MsgHead;
 
 import java.sql.Timestamp;
 
-@MsgName(job = "人员实时设备", filePath = "*PersonRealDevSync", sysType = BatchConstants.SystemType.rydw, exchangeName = MQConstants.ExChanges.EMP_DEV)
+@MsgName(job = "人员实时设备", filePath = "*PersonRealDevSync", sysType = BatchConstants.SystemType.rydw, exchangeName = MQConstants.ExChanges.EMP_SYNC_DEV)
 public class PersonRtDev extends MsgHead {
 
     @FieldOrder(order = 5)

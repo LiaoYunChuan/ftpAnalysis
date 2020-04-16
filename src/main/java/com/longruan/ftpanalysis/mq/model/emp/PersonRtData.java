@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-@MsgName(job = "人员实时数据", filePath = "*PersonRealSync*", sysType = BatchConstants.SystemType.rydw, exchangeName = MQConstants.ExChanges.EMP_RYSS)
+@MsgName(job = "人员实时数据", filePath = "*PersonRealSync*", sysType = BatchConstants.SystemType.rydw, exchangeName = MQConstants.ExChanges.EMP_SYNC_RTDATA)
 public class PersonRtData extends MsgHead {
 
     @FieldOrder(order = 5)
