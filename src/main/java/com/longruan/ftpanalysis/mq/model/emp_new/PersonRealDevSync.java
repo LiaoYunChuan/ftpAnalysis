@@ -40,6 +40,17 @@ public class PersonRealDevSync extends MsgHead {
     private String expand_info;//扩展实时数据信息
     @FieldOrder(order = 16)
     private String remark;//备注
+    private String time;
+
+    @Override
+    public String getTime() {
+        return time;
+    }
+
+    @Override
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     public String getDev_id() {
         return dev_id;
@@ -72,8 +83,11 @@ public class PersonRealDevSync extends MsgHead {
     public void setCollect_time_str(String collect_time_str) throws ParseException {
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd/HH:mm:ss");
         this.collect_time_str = collect_time_str;
-        this.collect_time=Timestamp.valueOf(sdf2.format(sdf1.parse(collect_time_str)));
+        String formatTime = sdf2.format(sdf1.parse(collect_time_str));
+        this.collect_time=Timestamp.valueOf(formatTime);
+        this.time = sdf3.format(sdf1.parse(collect_time_str));
     }
 
     public Timestamp getCollect_time() {

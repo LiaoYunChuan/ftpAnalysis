@@ -57,10 +57,10 @@ public class BatchApplicationTests {
 //        method(SensorRefence.class);//正常2  添加唯一键
 //        method(Station.class);//正常2
 //        method(SwitchData.class);//正常2
-//        method(PersonRtData.class);//正常
-//        method(PersonRealSync.class);
-//        method(PersonRealDevSync.class);
-        method(PersonTraceSync.class);
+       // method(PersonRtData.class);//正常2
+           //method(PersonRealSync.class);
+            //method(PersonRealDevSync.class);
+            //method(PersonTraceSync.class);
     }
 
     @Async

@@ -51,6 +51,18 @@ public class PersonRtData extends MsgHead {
     @FieldOrder(order = 19)
     private String remark;
 
+    private String time;
+
+    @Override
+    public String getTime() {
+        return time;
+    }
+
+    @Override
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     public String getPerson_id() {
         return person_id;
     }

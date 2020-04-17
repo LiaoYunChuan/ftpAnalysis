@@ -58,19 +58,19 @@ public class MsgHead {
         this.mineid = mine_id;
     }
 
-    public String getTime() {
-        return this.time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
     public String getMineid() {
         return mineid;
     }
 
     public void setMineid(String mineid) {
         this.mineid = mineid;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

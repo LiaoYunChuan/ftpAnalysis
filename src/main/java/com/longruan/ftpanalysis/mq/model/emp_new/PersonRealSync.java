@@ -51,6 +51,8 @@ public class PersonRealSync extends MsgHead {
     @FieldOrder(order = 19)
     private String remark;
 
+    private String time;
+
     public String getPerson_id() {
         return person_id;
     }
@@ -123,7 +125,7 @@ public class PersonRealSync extends MsgHead {
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.current_time_str = current_time_str;
-        this.current_time_=Timestamp.valueOf(sdf2.format(sdf1.parse(current_time_str)));
+        this.current_time_ = Timestamp.valueOf(sdf2.format(sdf1.parse(current_time_str)));
     }
 
     public Timestamp getCurrent_time_() {
@@ -150,7 +152,7 @@ public class PersonRealSync extends MsgHead {
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.in_well_time_str = in_well_time_str;
-        this.in_well_time=Timestamp.valueOf(sdf2.format(sdf1.parse(in_well_time_str)));
+        this.in_well_time = Timestamp.valueOf(sdf2.format(sdf1.parse(in_well_time_str)));
     }
 
     public Timestamp getIn_well_time() {
@@ -176,8 +178,11 @@ public class PersonRealSync extends MsgHead {
     public void setSource_time_str(String source_time_str) throws ParseException {
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd/HH:mm:ss");
         this.source_time_str = source_time_str;
-        this.source_time=Timestamp.valueOf(sdf2.format(sdf1.parse(source_time_str)));
+        String formatTime = sdf2.format(sdf1.parse(source_time_str));
+        this.source_time = Timestamp.valueOf(formatTime);
+        this.time = sdf3.format(sdf1.parse(source_time_str));
     }
 
     public Timestamp getSource_time() {
@@ -202,5 +207,15 @@ public class PersonRealSync extends MsgHead {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    @Override
+    public String getTime() {
+        return time;
+    }
+
+    @Override
+    public void setTime(String time) {
+        this.time = time;
     }
 }

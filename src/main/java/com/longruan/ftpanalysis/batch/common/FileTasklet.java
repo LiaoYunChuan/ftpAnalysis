@@ -116,7 +116,6 @@ public class FileTasklet implements Tasklet {
             exchangeName = msgName.hisExchangeName();
         }
         log.info("消息数 ： " + mqmsg.getData().size());
-        System.err.println(JSON.toJSONString(mqmsg));
         iSenderService.convertAndSend(exchangeName, "",JSON.toJSONString(mqmsg).getBytes());//发送消息到rabbitmq
     }
 
@@ -129,7 +128,7 @@ public class FileTasklet implements Tasklet {
                 file.mkdirs();
                 log.info("日志路径不存在，创建目录");
             }
-            Files.move(r.getFile().toPath(), Paths.get(logBasePath + r.getFilename()));
+            //Files.move(r.getFile().toPath(), Paths.get(logBasePath + r.getFilename()));
             log.info("输出到日志...");
         } catch (Exception e) {
             e.printStackTrace();
